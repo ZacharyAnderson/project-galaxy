@@ -2,7 +2,7 @@ import * as React from "react";
 import {
   Button,
   Card,
-  CardText,
+  CardBody,
   CardTitle,
   Form,
   FormGroup,
@@ -14,14 +14,16 @@ import {
 interface State {
   startingGravity: number;
   finalGravity: number;
+  abv: string;
 }
 
 class AbvCalculatorCard extends React.Component<{}, State> {
   constructor(props: {}) {
     super(props);
     this.state = {
+      abv: "",
       finalGravity: 1.01,
-      startingGravity: 1.048
+      startingGravity: 1.048,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -33,10 +35,11 @@ class AbvCalculatorCard extends React.Component<{}, State> {
   }
 
   public handleSubmit(event: any) {
-    alert(
-      "You're ABV is: " +
-        ((this.state.startingGravity - this.state.finalGravity) * 131.25)
-    );
+    const currentAbv = (
+      (this.state.startingGravity - this.state.finalGravity) *
+      131.25
+    ).toFixed(2);
+    this.setState({ abv: currentAbv });
     event.preventDefault();
   }
   public render() {
@@ -44,7 +47,7 @@ class AbvCalculatorCard extends React.Component<{}, State> {
       <div>
         <Card body={true}>
           <CardTitle>ABV Calculator</CardTitle>
-          <CardText>
+          <CardBody>
             <Form onSubmit={this.handleSubmit}>
               <FormGroup row={true}>
                 <InputGroup>
@@ -70,14 +73,16 @@ class AbvCalculatorCard extends React.Component<{}, State> {
                   />
                 </InputGroup>
                 <InputGroup>
-                  <InputGroupAddon addonType="prepend">
-                    <Button type="Submit">Calculate</Button>
-                  </InputGroupAddon>
-                  <Input />
+                <InputGroupAddon addonType="prepend">
+                  <Button type="Submit">Calculate</Button>
+                </InputGroupAddon> 
+                  <Input 
+                    value={this.state.abv}
+                  />
                 </InputGroup>
               </FormGroup>
             </Form>
-          </CardText>
+          </CardBody>
         </Card>
       </div>
     );
