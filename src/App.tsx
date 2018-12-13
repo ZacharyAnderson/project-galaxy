@@ -1,17 +1,14 @@
 import * as React from "react";
 import { Col, Container, Row } from "reactstrap";
 import AbvCalculatorCard from "../src/components/AbvCalculatorCard";
+import NavBar from "../src/components/NavBar";
 import "./App.css";
-import logo from "./logo.svg";
 
 class App extends React.Component {
   public render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
+          <NavBar />
         <Container>
           <Row>
             <Col xs="3">
