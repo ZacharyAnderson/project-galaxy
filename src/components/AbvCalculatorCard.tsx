@@ -54,7 +54,7 @@ class AbvCalculatorCard extends React.Component<{}, State> {
           <CardBody>
             <Form onSubmit={this.handleSubmit}>
               <FormGroup row={true}>
-                <InputGroup>
+                <InputGroup className="input-group inputspace">
                   <InputGroupAddon addonType="prepend">OG</InputGroupAddon>
                   <Input
                     type="number"

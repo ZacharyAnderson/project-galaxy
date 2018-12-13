@@ -1,5 +1,16 @@
 import * as React from "react";
-import { Col,Input, Navbar, NavbarBrand, Row } from "reactstrap";
+import {
+  Col,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
+  Input,
+  Navbar,
+  NavbarBrand,
+  NavLink,
+  UncontrolledDropdown
+} from "reactstrap";
+import "./NavBar.css";
 
 class NavBar extends React.Component<{}> {
   constructor(props: {}) {
@@ -10,19 +21,37 @@ class NavBar extends React.Component<{}> {
     return (
       <div>
         <Navbar color="dark">
-          <Row>
-            <Col>
-            <NavbarBrand href="/">project-galaxy</NavbarBrand>
-            </Col>
-            <Col>
+          <Col sm="1.5">
+            <NavbarBrand fixed="" href="/">
+              project-galaxy
+            </NavbarBrand>
+          </Col>
+          <Col sm="3">
             <Input
               type="search"
               name="searchbar"
               id="searchbar"
               placeholder="Oatmeal Stout"
             />
+          </Col>
+          <Col sm="1.5">
+            <NavLink href="/">Recipes</NavLink>
+          </Col>
+          <Col sm="1.5">
+            <NavLink href="/">Tool-Center</NavLink>
+          </Col>
+          <Col>
+            <UncontrolledDropdown className="float-right">
+                <DropdownToggle nav={true} caret={true}>
+                    User
+                </DropdownToggle>
+                <DropdownMenu right={true}>
+                    <DropdownItem>
+                        Settings
+                    </DropdownItem>
+                </DropdownMenu>
+            </UncontrolledDropdown>
             </Col>
-          </Row>
         </Navbar>
       </div>
     );

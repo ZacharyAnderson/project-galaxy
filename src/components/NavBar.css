@@ -1,0 +1,16 @@
+.navbar-brand {
+    display: flex;
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+  }
+
+.nav-link {
+    display: flex;
+    padding: .5rem 1rem;
+    color: #fff;
+}
+
