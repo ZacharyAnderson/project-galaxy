@@ -38,7 +38,7 @@ class NavBar extends React.Component<{}> {
             <NavLink href="/">Recipes</NavLink>
           </Col>
           <Col sm="1.5">
-            <NavLink href="/">Tool-Center</NavLink>
+            <NavLink href="/tool-center">Tool-Center</NavLink>
           </Col>
           <Col>
             <UncontrolledDropdown className="float-right">
