@@ -10,6 +10,7 @@ import {
   InputGroup,
   InputGroupAddon
 } from "reactstrap";
+import './AbvCalculatorCard.css';
 
 interface State {
   startingGravity: number;
@@ -54,7 +55,7 @@ class AbvCalculatorCard extends React.Component<{}, State> {
           <CardBody>
             <Form onSubmit={this.handleSubmit}>
               <FormGroup row={true}>
-                <InputGroup className="input-group inputspace">
+                <InputGroup className="input-group input-space" >
                   <InputGroupAddon addonType="prepend">OG</InputGroupAddon>
                   <Input
                     type="number"
@@ -65,7 +66,7 @@ class AbvCalculatorCard extends React.Component<{}, State> {
                     onChange={this.handleChange}
                   />
                 </InputGroup>
-                <InputGroup>
+                <InputGroup className="input-group input-space">
                   <InputGroupAddon addonType="prepend">FG</InputGroupAddon>
                   <Input
                     type="number"
