@@ -12,12 +12,39 @@ import {
 } from "reactstrap";
 import "./NavBar.css";
 
-class NavBar extends React.Component<{}> {
+interface State {
+  isLoggedIn: boolean;
+}
+
+class NavBar extends React.Component<{}, State> {
   constructor(props: {}) {
     super(props);
+    this.state = {
+      isLoggedIn: false
+    };
   }
 
   public render() {
+    let user;
+
+    if (this.state.isLoggedIn) {
+      user = (
+        <UncontrolledDropdown className="float-right">
+          <DropdownToggle nav={true} caret={true}>
+            User
+          </DropdownToggle>
+          <DropdownMenu right={true}>
+            <DropdownItem>Settings</DropdownItem>
+          </DropdownMenu>
+        </UncontrolledDropdown>
+      );
+    } else {
+      user = (
+        <NavLink className="float-right" href="/signup">
+          Sign Up
+        </NavLink>
+      );
+    }
     return (
       <div>
         <Navbar color="dark">
@@ -29,8 +56,8 @@ class NavBar extends React.Component<{}> {
           <Col sm="3">
             <Input
               type="search"
-              name="searchbar"
-              id="searchbar"
+              name="searchBar"
+              id="searchBar"
               placeholder="Oatmeal Stout"
             />
           </Col>
@@ -40,18 +67,7 @@ class NavBar extends React.Component<{}> {
           <Col sm="1.5">
             <NavLink href="/tool-center">Tool-Center</NavLink>
           </Col>
-          <Col>
-            <UncontrolledDropdown className="float-right">
-                <DropdownToggle nav={true} caret={true}>
-                    User
-                </DropdownToggle>
-                <DropdownMenu right={true}>
-                    <DropdownItem>
-                        Settings
-                    </DropdownItem>
-                </DropdownMenu>
-            </UncontrolledDropdown>
-            </Col>
+          <Col>{user}</Col>
         </Navbar>
       </div>
     );
