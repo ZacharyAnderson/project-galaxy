@@ -18,6 +18,7 @@ interface State {
   userName: string;
   userEmail: string;
   userPassword: string;
+  [key: string]: string;
 }
 
 class SignUp extends React.Component<{}, State> {
@@ -34,7 +35,7 @@ class SignUp extends React.Component<{}, State> {
 
   public handleChange(event: React.FormEvent<HTMLInputElement>) {
     const target = event.currentTarget as HTMLInputElement;
-    this.setState({ [target.name]: target.value } as any);
+    this.setState({ [target.name]: target.value });
   }
 
   public handleSubmit(event: any) {
