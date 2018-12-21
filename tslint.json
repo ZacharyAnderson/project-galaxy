@@ -9,6 +9,8 @@
   },
   "rules": {
     "interface-name": [true, "never-prefix"],
-    "ordered-imports": [true, "any"]
+    "ordered-imports": [true, "any"],
+    "object-literal-sort-keys": [false, "any"],
+    "no-console": false
   }
 }

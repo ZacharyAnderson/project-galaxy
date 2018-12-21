@@ -14,9 +14,34 @@ import {
   Row
 } from "reactstrap";
 
-class SignUp extends React.Component<{}> {
+interface State {
+  userName: string;
+  userEmail: string;
+  userPassword: string;
+}
+
+class SignUp extends React.Component<{}, State> {
   constructor(props: {}) {
     super(props);
+    this.state = {
+      userName: '',
+      userEmail: '',
+      userPassword: ''
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  public handleChange(event: React.FormEvent<HTMLInputElement>) {
+    const target = event.currentTarget as HTMLInputElement;
+    this.setState({ [target.name]: target.value } as any);
+  }
+
+  public handleSubmit(event: any) {
+    console.log(this.state.userName);
+    console.log(this.state.userPassword);
+    console.log(this.state.userEmail);
+    event.preventDefault();
   }
 
   public render() {
@@ -28,7 +53,7 @@ class SignUp extends React.Component<{}> {
               <Card>
                 <CardTitle>Join Project Galaxy</CardTitle>
                 <CardBody>
-                  <Form>
+                  <Form onSubmit={this.handleSubmit}>
                     <FormGroup>
                       <Label for="userName">Username</Label>
                       <Input
@@ -36,6 +61,7 @@ class SignUp extends React.Component<{}> {
                         name="userName"
                         id="userName"
                         placeholder="RickyGervais"
+                        onChange={this.handleChange}
                       />
                       <FormText color="muted">
                         This will be your username.
@@ -48,6 +74,7 @@ class SignUp extends React.Component<{}> {
                         name="userEmail"
                         id="userEmail"
                         placeholder="RickyG123@gmail.com"
+                        onChange={this.handleChange}
                       />
                       <FormText color="muted">
                         We'll never share your email address with anyone.
@@ -60,6 +87,7 @@ class SignUp extends React.Component<{}> {
                         name="userPassword"
                         id="userPassword"
                         placeholder="Type Password Here!"
+                        onChange={this.handleChange}
                       />
                       <FormText color="muted">
                         Make Sure it's atleast 8 characters including a number
