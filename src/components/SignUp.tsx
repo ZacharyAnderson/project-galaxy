@@ -18,6 +18,7 @@ interface State {
   userName: string;
   userEmail: string;
   userPassword: string;
+  userPassword2: string;
   [key: string]: string;
 }
 
@@ -27,7 +28,8 @@ class SignUp extends React.Component<{}, State> {
     this.state = {
       userName: '',
       userEmail: '',
-      userPassword: ''
+      userPassword: '',
+      userPassword2: ''
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -40,8 +42,12 @@ class SignUp extends React.Component<{}, State> {
 
   public handleSubmit(event: any) {
     console.log(this.state.userName);
-    console.log(this.state.userPassword);
     console.log(this.state.userEmail);
+    console.log(this.state.userPassword2);
+    console.log(this.state.userPassword);
+    if (this.state.userPassword === this.state.userPassword2) {
+      console.log('The password matches.')
+    }
     event.preventDefault();
   }
 
@@ -87,13 +93,26 @@ class SignUp extends React.Component<{}, State> {
                         type="password"
                         name="userPassword"
                         id="userPassword"
-                        placeholder="Type Password Here!"
+                        placeholder="Type Password Here"
                         onChange={this.handleChange}
                       />
                       <FormText color="muted">
                         Make Sure it's atleast 8 characters including a number
                         and lowercase letter.
                       </FormText>
+                      <FormGroup>
+                        <Label for="password2">Repeat Password</Label>
+                        <Input
+                          type="password"
+                          name="userPassword2"
+                          id="userPassword2"
+                          placeholder="Repeat Password Here"
+                          onChange={this.handleChange}
+                          />
+                          <FormText color="muted">
+                            Please repeate your password here.
+                          </FormText>
+                      </FormGroup>
                     </FormGroup>
                     <Button>Register</Button>
                   </Form>
