@@ -67,7 +67,7 @@ class SignUp extends React.Component<{}, State> {
                         type="text"
                         name="userName"
                         id="userName"
-                        placeholder="RickyGervais"
+                        placeholder="Username"
                         onChange={this.handleChange}
                       />
                       <FormText color="muted">
@@ -80,7 +80,7 @@ class SignUp extends React.Component<{}, State> {
                         type="email"
                         name="userEmail"
                         id="userEmail"
-                        placeholder="RickyG123@gmail.com"
+                        placeholder="Suzie@test.com"
                         onChange={this.handleChange}
                       />
                       <FormText color="muted">
@@ -108,9 +108,9 @@ class SignUp extends React.Component<{}, State> {
                           id="userPassword2"
                           placeholder="Repeat Password Here"
                           onChange={this.handleChange}
-                          />
-                          <FormText color="muted">
-                            Please repeate your password here.
+                        />
+                        <FormText color="muted">
+                          Please repeate your password here.
                           </FormText>
                       </FormGroup>
                     </FormGroup>
