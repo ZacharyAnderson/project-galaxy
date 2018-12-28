@@ -56,7 +56,7 @@ class SignUp extends React.Component<{}, State> {
         } else if (this.state.userPassword !== this.state.userPassword2) {
           console.log("Looks like your passwords don't match.");
         } else {
-          console.log("Time to register!")
+          console.log("Registering " + this.state.userName)
           fetch("http://127.0.0.1:5000/api/v1.0/registration", {
             method: 'POST',
             headers: {
