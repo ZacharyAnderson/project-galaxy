@@ -49,12 +49,26 @@ class SignUp extends React.Component<{}, State> {
       .then(([data1, data2]) => {
         this.setState({ uniqueEmail: data1.isUnique });
         this.setState({ uniqueUsername: data2.isUnique });
-        if (this.state.uniqueUsername === true && this.state.uniqueEmail === true) {
-          console.log("Looks like its time to register..");
+        if (this.state.uniqueUsername === false) {
+          console.log("This username already exists!");
         } else if (this.state.uniqueEmail === false) {
           console.log("this email is already in use!");
-        } else if (this.state.uniqueUsername === false) {
-          console.log("This username already exists!");
+        } else if (this.state.userPassword !== this.state.userPassword2) {
+          console.log("Looks like your passwords don't match.");
+        } else {
+          console.log("Time to register!")
+          fetch("http://127.0.0.1:5000/api/v1.0/registration", {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ 'username': this.state.userName, 'useremail': this.state.userEmail, 'userpassword': this.state.userPassword })
+          })
+            .then(response => response.json())
+            .then(data => {
+              console.log(data);
+            })
         }
       })
 
@@ -66,16 +80,7 @@ class SignUp extends React.Component<{}, State> {
   }
 
   public handleSubmit(event: any) {
-    console.log(this.state.userName);
-    console.log(this.state.userEmail);
-    console.log(this.state.userPassword2);
-    console.log(this.state.userPassword);
-    console.log(this.state.uniqueUsername);
-    console.log(this.state.uniqueEmail);
     this.registerUser(this.state.userName, this.state.userEmail)
-    if (this.state.userPassword === this.state.userPassword2) {
-      console.log('The password matches.')
-    }
     event.preventDefault();
   }
 
