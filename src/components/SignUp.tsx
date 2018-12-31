@@ -7,6 +7,7 @@ import {
   Col,
   Container,
   Form,
+  FormFeedback,
   FormGroup,
   FormText,
   Input,
@@ -21,6 +22,7 @@ interface State {
   userPassword2: string;
   uniqueUsername: boolean;
   uniqueEmail: boolean;
+  passwordsMatch: boolean;
   [key: string]: string | boolean;
 }
 
@@ -33,7 +35,8 @@ class SignUp extends React.Component<{}, State> {
       userPassword: '',
       userPassword2: '',
       uniqueUsername: false,
-      uniqueEmail: false
+      uniqueEmail: false,
+      passwordsMatch: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -56,6 +59,7 @@ class SignUp extends React.Component<{}, State> {
         } else if (this.state.userPassword !== this.state.userPassword2) {
           console.log("Looks like your passwords don't match.");
         } else {
+          this.setState({ passwordsMatch: true })
           console.log("Registering " + this.state.userName)
           fetch("http://127.0.0.1:5000/api/v1.0/registration", {
             method: 'POST',
@@ -77,6 +81,24 @@ class SignUp extends React.Component<{}, State> {
   public handleChange(event: React.FormEvent<HTMLInputElement>) {
     const target = event.currentTarget as HTMLInputElement;
     this.setState({ [target.name]: target.value });
+
+    if (target.name === 'userName' && target.value !== '') {
+      fetch("http://127.0.0.1:5000/api/v1.0/registration/username/" + target.value)
+        .then(response => response.json())
+        .then(data => {
+          this.setState({ uniqueUsername: data.isUnique })
+        })
+    } else if (target.name === 'userEmail' && target.value !== '') {
+      fetch("http://127.0.0.1:5000/api/v1.0/registration/email/" + target.value)
+        .then(response => response.json())
+        .then(data => {
+          this.setState({ uniqueEmail: data.isUnique })
+        })
+    } else if (target.name === 'userName' && target.value === '') {
+      this.setState({ uniqueUsername: false })
+    } else if (target.name === 'userEmail' && target.value === '') {
+      this.setState({ uniqueEmail: false })
+    }
   }
 
   public handleSubmit(event: any) {
@@ -102,7 +124,11 @@ class SignUp extends React.Component<{}, State> {
                         id="userName"
                         placeholder="Username"
                         onChange={this.handleChange}
+                        valid={this.state.uniqueUsername}
+                        invalid={!this.state.uniqueUsername && this.state.userName !== ''}
                       />
+                      <FormFeedback valid={true} >The Username is available!</FormFeedback>
+                      <FormFeedback>The Username is already taken.</FormFeedback>
                       <FormText color="muted">
                         This will be your username.
                       </FormText>
@@ -115,7 +141,11 @@ class SignUp extends React.Component<{}, State> {
                         id="userEmail"
                         placeholder="Suzie@test.com"
                         onChange={this.handleChange}
+                        valid={this.state.uniqueEmail}
+                        invalid={!this.state.uniqueEmail && this.state.userEmail !== ''}
                       />
+                      <FormFeedback valid={true} >This email has not been registered already.</FormFeedback>
+                      <FormFeedback>This email has already been registered.</FormFeedback>
                       <FormText color="muted">
                         We'll never share your email address with anyone.
                       </FormText>
@@ -128,7 +158,9 @@ class SignUp extends React.Component<{}, State> {
                         id="userPassword"
                         placeholder="Type Password Here"
                         onChange={this.handleChange}
+                        invalid={this.state.passwordsMatch}
                       />
+                      <FormFeedback>The passwords aren't valid!</FormFeedback>
                       <FormText color="muted">
                         Make Sure it's atleast 8 characters including a number
                         and lowercase letter.
@@ -141,7 +173,9 @@ class SignUp extends React.Component<{}, State> {
                           id="userPassword2"
                           placeholder="Repeat Password Here"
                           onChange={this.handleChange}
+                          invalid={false}
                         />
+                        <FormFeedback>The passwords aren't valid!</FormFeedback>
                         <FormText color="muted">
                           Please repeate your password here.
                           </FormText>
