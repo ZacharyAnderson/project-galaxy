@@ -11,6 +11,7 @@ import {
   FormGroup,
   FormText,
   Input,
+  Jumbotron,
   Label,
   Row
 } from "reactstrap";
@@ -109,85 +110,87 @@ class SignUp extends React.Component<{}, State> {
   public render() {
     return (
       <div>
-        <Container>
-          <Row>
-            <Col>
-              <Card>
-                <CardTitle>Join Project Galaxy</CardTitle>
-                <CardBody>
-                  <Form onSubmit={this.handleSubmit}>
-                    <FormGroup>
-                      <Label for="userName">Username</Label>
-                      <Input
-                        type="text"
-                        name="userName"
-                        id="userName"
-                        placeholder="Username"
-                        onChange={this.handleChange}
-                        valid={this.state.uniqueUsername}
-                        invalid={!this.state.uniqueUsername && this.state.userName !== ''}
-                      />
-                      <FormFeedback valid={true} >The Username is available!</FormFeedback>
-                      <FormFeedback>The Username is already taken.</FormFeedback>
-                      <FormText color="muted">
-                        This will be your username.
-                      </FormText>
-                    </FormGroup>
-                    <FormGroup>
-                      <Label for="email">Email</Label>
-                      <Input
-                        type="email"
-                        name="userEmail"
-                        id="userEmail"
-                        placeholder="Suzie@test.com"
-                        onChange={this.handleChange}
-                        valid={this.state.uniqueEmail}
-                        invalid={!this.state.uniqueEmail && this.state.userEmail !== ''}
-                      />
-                      <FormFeedback valid={true} >This email has not been registered already.</FormFeedback>
-                      <FormFeedback>This email has already been registered.</FormFeedback>
-                      <FormText color="muted">
-                        We'll never share your email address with anyone.
-                      </FormText>
-                    </FormGroup>
-                    <FormGroup>
-                      <Label for="password">Password</Label>
-                      <Input
-                        type="password"
-                        name="userPassword"
-                        id="userPassword"
-                        placeholder="Type Password Here"
-                        onChange={this.handleChange}
-                        invalid={this.state.passwordsMatch}
-                      />
-                      <FormFeedback>The passwords aren't valid!</FormFeedback>
-                      <FormText color="muted">
-                        Make Sure it's atleast 8 characters including a number
-                        and lowercase letter.
-                      </FormText>
+        <Jumbotron>
+          <Container>
+            <Row>
+              <Col>
+                <Card>
+                  <CardTitle>Join Project Galaxy</CardTitle>
+                  <CardBody>
+                    <Form onSubmit={this.handleSubmit}>
                       <FormGroup>
-                        <Label for="password2">Repeat Password</Label>
+                        <Label for="userName">Username</Label>
+                        <Input
+                          type="text"
+                          name="userName"
+                          id="userName"
+                          placeholder="Username"
+                          onChange={this.handleChange}
+                          valid={this.state.uniqueUsername}
+                          invalid={!this.state.uniqueUsername && this.state.userName !== ''}
+                        />
+                        <FormFeedback valid={true} >The Username is available!</FormFeedback>
+                        <FormFeedback>The Username is already taken.</FormFeedback>
+                        <FormText color="muted">
+                          This will be your username.
+                      </FormText>
+                      </FormGroup>
+                      <FormGroup>
+                        <Label for="email">Email</Label>
+                        <Input
+                          type="email"
+                          name="userEmail"
+                          id="userEmail"
+                          placeholder="Suzie@test.com"
+                          onChange={this.handleChange}
+                          valid={this.state.uniqueEmail}
+                          invalid={!this.state.uniqueEmail && this.state.userEmail !== ''}
+                        />
+                        <FormFeedback valid={true} >This email has not been registered already.</FormFeedback>
+                        <FormFeedback>This email has already been registered.</FormFeedback>
+                        <FormText color="muted">
+                          We'll never share your email address with anyone.
+                      </FormText>
+                      </FormGroup>
+                      <FormGroup>
+                        <Label for="password">Password</Label>
                         <Input
                           type="password"
-                          name="userPassword2"
-                          id="userPassword2"
-                          placeholder="Repeat Password Here"
+                          name="userPassword"
+                          id="userPassword"
+                          placeholder="Type Password Here"
                           onChange={this.handleChange}
-                          invalid={false}
+                          invalid={this.state.passwordsMatch}
                         />
                         <FormFeedback>The passwords aren't valid!</FormFeedback>
                         <FormText color="muted">
-                          Please repeate your password here.
+                          Make Sure it's atleast 8 characters including a number
+                          and lowercase letter.
+                      </FormText>
+                        <FormGroup>
+                          <Label for="password2">Repeat Password</Label>
+                          <Input
+                            type="password"
+                            name="userPassword2"
+                            id="userPassword2"
+                            placeholder="Repeat Password Here"
+                            onChange={this.handleChange}
+                            invalid={false}
+                          />
+                          <FormFeedback>The passwords aren't valid!</FormFeedback>
+                          <FormText color="muted">
+                            Please repeate your password here.
                           </FormText>
+                        </FormGroup>
                       </FormGroup>
-                    </FormGroup>
-                    <Button>Register</Button>
-                  </Form>
-                </CardBody>
-              </Card>
-            </Col>
-          </Row>
-        </Container>
+                      <Button>Register</Button>
+                    </Form>
+                  </CardBody>
+                </Card>
+              </Col>
+            </Row>
+          </Container>
+        </Jumbotron>
       </div>
     );
   }
