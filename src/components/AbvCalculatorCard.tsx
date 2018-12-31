@@ -26,7 +26,7 @@ class AbvCalculatorCard extends React.Component<{}, State> {
       abv: "",
       finalGravity: 1.01,
       isSubmitted: false,
-      startingGravity: 1.048      
+      startingGravity: 1.048
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -78,10 +78,10 @@ class AbvCalculatorCard extends React.Component<{}, State> {
                   />
                 </InputGroup>
                 <InputGroup>
-                <InputGroupAddon addonType="prepend">
-                  <Button type="Submit">Calculate</Button>
-                </InputGroupAddon>
-                <Input value={ this.state.isSubmitted ? this.state.abv.concat( "%"): "" } />
+                  <InputGroupAddon addonType="prepend">
+                    <Button type="Submit">Calculate</Button>
+                  </InputGroupAddon>
+                  <Input value={this.state.isSubmitted ? this.state.abv.concat("%") : ""} />
                 </InputGroup>
               </FormGroup>
             </Form>

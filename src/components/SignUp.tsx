@@ -15,6 +15,7 @@ import {
   Label,
   Row
 } from "reactstrap";
+import './SignUp.css';
 
 interface State {
   userName: string;
@@ -115,7 +116,7 @@ class SignUp extends React.Component<{}, State> {
             <Row>
               <Col>
                 <Card>
-                  <CardTitle>Join Project Galaxy</CardTitle>
+                  <CardTitle tag="h2" >Join Project Galaxy</CardTitle>
                   <CardBody>
                     <Form onSubmit={this.handleSubmit}>
                       <FormGroup>
