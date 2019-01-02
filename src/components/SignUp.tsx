@@ -15,7 +15,7 @@ import {
   Label,
   Row
 } from "reactstrap";
-import './SignUp.css';
+import "./SignUp.css";
 
 interface State {
   userName: string;
@@ -24,7 +24,6 @@ interface State {
   userPassword2: string;
   uniqueUsername: boolean;
   uniqueEmail: boolean;
-  passwordsMatch: boolean;
   [key: string]: string | boolean;
 }
 
@@ -32,13 +31,12 @@ class SignUp extends React.Component<{}, State> {
   constructor(props: {}) {
     super(props);
     this.state = {
-      userName: '',
-      userEmail: '',
-      userPassword: '',
-      userPassword2: '',
+      userName: "",
+      userEmail: "",
+      userPassword: "",
+      userPassword2: "",
       uniqueUsername: false,
-      uniqueEmail: false,
-      passwordsMatch: false
+      uniqueEmail: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -50,7 +48,9 @@ class SignUp extends React.Component<{}, State> {
       fetch("http://127.0.0.1:5000/api/v1.0/registration/username/" + username),
       fetch("http://127.0.0.1:5000/api/v1.0/registration/email/" + useremail)
     ])
-      .then(([response1, response2]) => Promise.all([response1.json(), response2.json()]))
+      .then(([response1, response2]) =>
+        Promise.all([response1.json(), response2.json()])
+      )
       .then(([data1, data2]) => {
         this.setState({ uniqueEmail: data1.isUnique });
         this.setState({ uniqueUsername: data2.isUnique });
@@ -61,50 +61,54 @@ class SignUp extends React.Component<{}, State> {
         } else if (this.state.userPassword !== this.state.userPassword2) {
           console.log("Looks like your passwords don't match.");
         } else {
-          this.setState({ passwordsMatch: true })
-          console.log("Registering " + this.state.userName)
+          console.log("Registering " + this.state.userName);
           fetch("http://127.0.0.1:5000/api/v1.0/registration", {
-            method: 'POST',
+            method: "POST",
             headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
+              Accept: "application/json",
+              "Content-Type": "application/json"
             },
-            body: JSON.stringify({ 'username': this.state.userName, 'useremail': this.state.userEmail, 'userpassword': this.state.userPassword })
+            body: JSON.stringify({
+              username: this.state.userName,
+              useremail: this.state.userEmail,
+              userpassword: this.state.userPassword
+            })
           })
             .then(response => response.json())
             .then(data => {
               console.log(data);
-            })
+            });
         }
-      })
-
+      });
   }
 
   public handleChange(event: React.FormEvent<HTMLInputElement>) {
     const target = event.currentTarget as HTMLInputElement;
     this.setState({ [target.name]: target.value });
 
-    if (target.name === 'userName' && target.value !== '') {
-      fetch("http://127.0.0.1:5000/api/v1.0/registration/username/" + target.value)
+    if (target.name === "userName" && target.value !== "") {
+      fetch(
+        "http://127.0.0.1:5000/api/v1.0/registration/username/" + target.value
+      )
         .then(response => response.json())
         .then(data => {
-          this.setState({ uniqueUsername: data.isUnique })
-        })
-    } else if (target.name === 'userEmail' && target.value !== '') {
+          this.setState({ uniqueUsername: data.isUnique });
+        });
+    } else if (target.name === "userEmail" && target.value !== "") {
       fetch("http://127.0.0.1:5000/api/v1.0/registration/email/" + target.value)
         .then(response => response.json())
         .then(data => {
-          this.setState({ uniqueEmail: data.isUnique })
-        })
-    } else if (target.name === 'userName' && target.value === '') {
-      this.setState({ uniqueUsername: false })
-    } else if (target.name === 'userEmail' && target.value === '') {
-      this.setState({ uniqueEmail: false })
+          this.setState({ uniqueEmail: data.isUnique });
+        });
+    } else if (target.name === "userName" && target.value === "") {
+      this.setState({ uniqueUsername: false });
+    } else if (target.name === "userEmail" && target.value === "") {
+      this.setState({ uniqueEmail: false });
     }
   }
 
   public handleSubmit(event: any) {
-    this.registerUser(this.state.userName, this.state.userEmail)
+    this.registerUser(this.state.userName, this.state.userEmail);
     event.preventDefault();
   }
 
@@ -116,7 +120,7 @@ class SignUp extends React.Component<{}, State> {
             <Row>
               <Col>
                 <Card>
-                  <CardTitle tag="h2" >Join Project Galaxy</CardTitle>
+                  <CardTitle tag="h2">Join Project Galaxy</CardTitle>
                   <CardBody>
                     <Form onSubmit={this.handleSubmit}>
                       <FormGroup>
@@ -128,13 +132,20 @@ class SignUp extends React.Component<{}, State> {
                           placeholder="Username"
                           onChange={this.handleChange}
                           valid={this.state.uniqueUsername}
-                          invalid={!this.state.uniqueUsername && this.state.userName !== ''}
+                          invalid={
+                            !this.state.uniqueUsername &&
+                            this.state.userName !== ""
+                          }
                         />
-                        <FormFeedback valid={true} >The Username is available!</FormFeedback>
-                        <FormFeedback>The Username is already taken.</FormFeedback>
+                        <FormFeedback valid={true}>
+                          The Username is available!
+                        </FormFeedback>
+                        <FormFeedback>
+                          The Username is already taken.
+                        </FormFeedback>
                         <FormText color="muted">
                           This will be your username.
-                      </FormText>
+                        </FormText>
                       </FormGroup>
                       <FormGroup>
                         <Label for="email">Email</Label>
@@ -145,13 +156,20 @@ class SignUp extends React.Component<{}, State> {
                           placeholder="Suzie@test.com"
                           onChange={this.handleChange}
                           valid={this.state.uniqueEmail}
-                          invalid={!this.state.uniqueEmail && this.state.userEmail !== ''}
+                          invalid={
+                            !this.state.uniqueEmail &&
+                            this.state.userEmail !== ""
+                          }
                         />
-                        <FormFeedback valid={true} >This email has not been registered already.</FormFeedback>
-                        <FormFeedback>This email has already been registered.</FormFeedback>
+                        <FormFeedback valid={true}>
+                          This email has not been registered already.
+                        </FormFeedback>
+                        <FormFeedback>
+                          This email has already been registered.
+                        </FormFeedback>
                         <FormText color="muted">
                           We'll never share your email address with anyone.
-                      </FormText>
+                        </FormText>
                       </FormGroup>
                       <FormGroup>
                         <Label for="password">Password</Label>
@@ -161,13 +179,20 @@ class SignUp extends React.Component<{}, State> {
                           id="userPassword"
                           placeholder="Type Password Here"
                           onChange={this.handleChange}
-                          invalid={this.state.passwordsMatch}
+                          invalid={
+                            !(
+                              this.state.userPassword ===
+                              this.state.userPassword2
+                            ) &&
+                            this.state.userPassword !== "" &&
+                            this.state.userPassword2 !== ""
+                          }
                         />
                         <FormFeedback>The passwords aren't valid!</FormFeedback>
                         <FormText color="muted">
                           Make Sure it's atleast 8 characters including a number
                           and lowercase letter.
-                      </FormText>
+                        </FormText>
                         <FormGroup>
                           <Label for="password2">Repeat Password</Label>
                           <Input
@@ -176,11 +201,20 @@ class SignUp extends React.Component<{}, State> {
                             id="userPassword2"
                             placeholder="Repeat Password Here"
                             onChange={this.handleChange}
-                            invalid={false}
+                            invalid={
+                              !(
+                                this.state.userPassword ===
+                                this.state.userPassword2
+                              ) &&
+                              this.state.userPassword !== "" &&
+                              this.state.userPassword2 !== ""
+                            }
                           />
-                          <FormFeedback>The passwords aren't valid!</FormFeedback>
+                          <FormFeedback>
+                            The passwords aren't valid!
+                          </FormFeedback>
                           <FormText color="muted">
-                            Please repeate your password here.
+                            Please repeat your password here.
                           </FormText>
                         </FormGroup>
                       </FormGroup>
