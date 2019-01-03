@@ -1,4 +1,5 @@
 import * as React from "react";
+import { connect } from "react-redux";
 import {
   Button,
   Card,
@@ -27,8 +28,12 @@ interface State {
   [key: string]: string | boolean;
 }
 
-class SignUp extends React.Component<{}, State> {
-  constructor(props: {}) {
+interface Props {
+  api: string;
+}
+
+class SignUp extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       userName: "",
@@ -45,8 +50,8 @@ class SignUp extends React.Component<{}, State> {
 
   public registerUser(username: string, useremail: string): any {
     Promise.all([
-      fetch("http://127.0.0.1:5000/api/v1.0/registration/username/" + username),
-      fetch("http://127.0.0.1:5000/api/v1.0/registration/email/" + useremail)
+      fetch(this.props.api + "registration/username/" + username),
+      fetch(this.props.api + "registration/email/" + useremail)
     ])
       .then(([response1, response2]) =>
         Promise.all([response1.json(), response2.json()])
@@ -62,7 +67,7 @@ class SignUp extends React.Component<{}, State> {
           console.log("Looks like your passwords don't match.");
         } else {
           console.log("Registering " + this.state.userName);
-          fetch("http://127.0.0.1:5000/api/v1.0/registration", {
+          fetch(this.props.api + "registration", {
             method: "POST",
             headers: {
               Accept: "application/json",
@@ -83,19 +88,18 @@ class SignUp extends React.Component<{}, State> {
   }
 
   public handleChange(event: React.FormEvent<HTMLInputElement>) {
+    console.log(this.props.api);
     const target = event.currentTarget as HTMLInputElement;
     this.setState({ [target.name]: target.value });
 
     if (target.name === "userName" && target.value !== "") {
-      fetch(
-        "http://127.0.0.1:5000/api/v1.0/registration/username/" + target.value
-      )
+      fetch(this.props.api + "registration/username/" + target.value)
         .then(response => response.json())
         .then(data => {
           this.setState({ uniqueUsername: data.isUnique });
         });
     } else if (target.name === "userEmail" && target.value !== "") {
-      fetch("http://127.0.0.1:5000/api/v1.0/registration/email/" + target.value)
+      fetch(this.props.api + "registration/email/" + target.value)
         .then(response => response.json())
         .then(data => {
           this.setState({ uniqueEmail: data.isUnique });
@@ -231,4 +235,10 @@ class SignUp extends React.Component<{}, State> {
   }
 }
 
-export default SignUp;
+function mapStatetoProps(state: any) {
+  return {
+    api: state.tempReducer.api
+  };
+}
+
+export default connect(mapStatetoProps)(SignUp);
