@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Button, Card, Container, Form, FormGroup, Input, Label } from "reactstrap";
+import "./LogIn.css";
 
 class LogIn extends React.Component<{}> {
     constructor(props: {}) {
@@ -9,17 +10,18 @@ class LogIn extends React.Component<{}> {
     public render() {
         return (
             <Container>
-                <Card>
+                <Label className="label-header">Sign in to Project Galaxy</Label>
+                <Card className="card">
                     <Form>
                         <FormGroup>
-                            <Label for="username" style={{ fontWeight: 'bold' }}>Username or email address</Label>
+                            <Label for="username" className="label" >Username or email address</Label>
                             <Input type="text" name="username" id="username" />
                         </FormGroup>
                         <FormGroup>
-                            <Label for="password" style={{ fontWeight: 'bold' }}>Password</Label>
+                            <Label for="password" className="label" >Password</Label>
                             <Input type="password" name="password" id="password" />
                         </FormGroup>
-                        <Button style={{ width: '100%' }}>Sign In</Button>
+                        <Button className="button">Sign In</Button>
                     </Form>
                 </Card>
             </Container>

@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link } from 'react-router-dom';
 import {
   Col,
   DropdownItem,
@@ -40,7 +41,7 @@ class NavBar extends React.Component<{}, State> {
       );
     } else {
       user = (
-        <NavLink className="float-right" href="/signup">
+        <NavLink className="float-right" tag={Link} to="/signup">
           Sign Up
         </NavLink>
       );
@@ -49,7 +50,7 @@ class NavBar extends React.Component<{}, State> {
       <div>
         <Navbar color="dark">
           <Col sm="1.5">
-            <NavbarBrand fixed="" href="/">
+            <NavbarBrand fixed="" tag={Link} to="/">
               project-galaxy
             </NavbarBrand>
           </Col>
@@ -62,10 +63,10 @@ class NavBar extends React.Component<{}, State> {
             />
           </Col>
           <Col sm="1.5">
-            <NavLink href="/">Recipes</NavLink>
+            <NavLink tag={Link} to="/">Recipes</NavLink>
           </Col>
           <Col sm="1.5">
-            <NavLink href="/tool-center">Tool-Center</NavLink>
+            <NavLink tag={Link} to="/tool-center">Tool-Center</NavLink>
           </Col>
           <Col>{user}</Col>
         </Navbar>
