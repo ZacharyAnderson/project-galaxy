@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { Card, Container } from 'reactstrap';
+import { Link } from 'react-router-dom';
+import { Card, CardText, Col, Container, Row } from 'reactstrap';
+import './CreateAccountCard.css';
 
 class CreateAccountCard extends React.Component<{}> {
     constructor(props: {}) {
@@ -10,8 +12,17 @@ class CreateAccountCard extends React.Component<{}> {
         return (
             <div>
                 <Container>
-                    <Card>
-                        New to Project-galaxy? Create an account.
+                    <Card className="card">
+                        <Container className="Container">
+                            <Row>
+                                <Col>
+                                    <CardText className="float-right">New to galaxy?</CardText>
+                                </Col>
+                                <Col className="Right-Col">
+                                    <CardText className="float-left" tag={Link} to="/signup">Create an account.</CardText>
+                                </Col>
+                            </Row>
+                        </Container>
                     </Card>
                 </Container>
             </div>

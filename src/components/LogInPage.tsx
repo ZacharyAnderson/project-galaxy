@@ -14,12 +14,12 @@ class LogInPage extends React.Component<{}> {
                 <Jumbotron>
                     <Container>
                         <Row >
-                            <Col xs="12 offset-0" sm="4 offset-sm-4">
+                            <Col xs="12 offset-0" sm="6 offset-sm-3">
                                 <LogIn />
                             </Col>
                         </Row>
                         <Row>
-                            <Col xs="12" sm="4 offset-sm-4">
+                            <Col xs="12" sm="6 offset-sm-3">
                                 <CreateAccountCard />
                             </Col>
                         </Row>

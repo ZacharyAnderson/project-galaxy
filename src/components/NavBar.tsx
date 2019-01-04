@@ -68,7 +68,10 @@ class NavBar extends React.Component<{}, State> {
           <Col sm="1.5">
             <NavLink tag={Link} to="/tool-center">Tool-Center</NavLink>
           </Col>
-          <Col>{user}</Col>
+          <Col>
+            <NavLink className="float-right" tag={Link} to="/login">Login</NavLink>
+          </Col>
+          <Col sm="1.5" >{user}</Col>
         </Navbar>
       </div>
     );

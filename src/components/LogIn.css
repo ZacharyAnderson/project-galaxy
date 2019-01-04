@@ -3,6 +3,11 @@
     font-size: 1rem;
 }
 
+.label-top {
+    font-weight: bold;
+    font-size: 1rem;
+    margin-top: 1rem;
+}
 .label-header {
     font-size: 1.2rem;
     font-weight: bold;
@@ -13,6 +18,7 @@
 
 .button {
     width: 100%;
+    margin-bottom: 1rem;
 }
 
 .card {
