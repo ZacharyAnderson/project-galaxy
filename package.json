@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "bootstrap": "^4.2.1",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
+    "bootstrap": "^4.1.3",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
     "react-scripts-ts": "^4.0.8",
@@ -20,15 +20,14 @@
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
-    "@types/jest": "^23.3.12",
-    "@types/node": "^10.12.18",
-    "@types/react": "^16.7.18",
+    "@types/jest": "^23.3.10",
+    "@types/node": "^10.12.12",
+    "@types/react": "^16.7.13",
     "@types/react-dom": "^16.0.11",
-    "@types/react-redux": "^6.0.12",
+    "@types/react-redux": "^6.0.11",
     "@types/react-router-dom": "^4.3.1",
     "@types/reactstrap": "^6.4.3",
-    "typescript": "^3.2.2",
-    "webpack-dev-server": "^3.1.14"
+    "typescript": "^3.2.2"
   },
   "browserslist": [
     ">0.2%",
