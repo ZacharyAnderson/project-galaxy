@@ -88,6 +88,7 @@ class SignUp extends React.Component<Props, State> {
   }
 
   public handleChange(event: React.FormEvent<HTMLInputElement>) {
+    console.log(this.props.api);
     const target = event.currentTarget as HTMLInputElement;
     this.setState({ [target.name]: target.value });
 
