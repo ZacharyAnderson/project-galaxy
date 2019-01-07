@@ -2,6 +2,7 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import {
+  Alert,
   Button,
   Card,
   CardBody,
@@ -27,6 +28,7 @@ interface State {
   uniqueUsername: boolean;
   uniqueEmail: boolean;
   redirect: boolean;
+  registrationFailed: boolean;
   [key: string]: string | boolean;
 }
 
@@ -44,7 +46,8 @@ class SignUp extends React.Component<Props, State> {
       userPassword2: "",
       uniqueUsername: false,
       uniqueEmail: false,
-      redirect: false
+      redirect: false,
+      registrationFailed: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -87,8 +90,12 @@ class SignUp extends React.Component<Props, State> {
                 this.setState({ redirect: true })
                 return response.json();
               } else {
+                this.setState({ registrationFailed: true });
                 return response.json();
               }
+            })
+            .catch(() => {
+              console.log("failed");
             })
             .then(data => {
               console.log(data);
@@ -126,14 +133,20 @@ class SignUp extends React.Component<Props, State> {
   }
 
   public render() {
+    let registrationAlert;
 
     if (this.state.redirect) {
       return <Redirect to='/login' />
     }
 
+    if (this.state.registrationFailed) {
+      registrationAlert = <Alert color="danger">Registration has failed.</Alert>;
+    }
+
     return (
       <div>
         <Jumbotron>
+          {registrationAlert}
           <Container>
             <Row>
               <Col>
