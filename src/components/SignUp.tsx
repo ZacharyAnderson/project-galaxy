@@ -1,5 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import {
   Button,
   Card,
@@ -25,6 +26,7 @@ interface State {
   userPassword2: string;
   uniqueUsername: boolean;
   uniqueEmail: boolean;
+  redirect: boolean;
   [key: string]: string | boolean;
 }
 
@@ -41,7 +43,8 @@ class SignUp extends React.Component<Props, State> {
       userPassword: "",
       userPassword2: "",
       uniqueUsername: false,
-      uniqueEmail: false
+      uniqueEmail: false,
+      redirect: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -79,10 +82,17 @@ class SignUp extends React.Component<Props, State> {
               userpassword: this.state.userPassword
             })
           })
-            .then(response => response.json())
+            .then(response => {
+              if (response.ok) {
+                this.setState({ redirect: true })
+                return response.json();
+              } else {
+                return response.json();
+              }
+            })
             .then(data => {
               console.log(data);
-            });
+            })
         }
       });
   }
@@ -116,6 +126,11 @@ class SignUp extends React.Component<Props, State> {
   }
 
   public render() {
+
+    if (this.state.redirect) {
+      return <Redirect to='/login' />
+    }
+
     return (
       <div>
         <Jumbotron>
