@@ -29,7 +29,8 @@ interface State {
   uniqueEmail: boolean;
   redirect: boolean;
   registrationFailed: boolean;
-  [key: string]: string | boolean;
+  regFailedStatus: number;
+  [key: string]: string | boolean | number;
 }
 
 interface Props {
@@ -47,7 +48,8 @@ class SignUp extends React.Component<Props, State> {
       uniqueUsername: false,
       uniqueEmail: false,
       redirect: false,
-      registrationFailed: false
+      registrationFailed: false,
+      regFailedStatus: 0
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -91,15 +93,10 @@ class SignUp extends React.Component<Props, State> {
                 return response.json();
               } else {
                 this.setState({ registrationFailed: true });
+                this.setState({ regFailedStatus: response.status })
                 return response.json();
               }
-            })
-            .catch(() => {
-              console.log("failed");
-            })
-            .then(data => {
-              console.log(data);
-            })
+            });
         }
       });
   }
@@ -140,18 +137,18 @@ class SignUp extends React.Component<Props, State> {
     }
 
     if (this.state.registrationFailed) {
-      registrationAlert = <Alert color="danger">Registration has failed.</Alert>;
+      registrationAlert = <Alert color="danger">Registration has failed - Status {this.state.regFailedStatus}</Alert>;
     }
 
     return (
       <div>
         <Jumbotron>
-          {registrationAlert}
           <Container>
             <Row>
               <Col>
                 <Card>
                   <CardTitle tag="h2">Join Project Galaxy</CardTitle>
+                  {registrationAlert}
                   <CardBody>
                     <Form onSubmit={this.handleSubmit}>
                       <FormGroup>
