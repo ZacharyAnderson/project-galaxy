@@ -1,19 +1,28 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 import { Button, Card, Container, Form, FormGroup, Input, Label } from "reactstrap";
 import "./LogIn.css";
 
 interface State {
     userName: string;
     userPassword: string;
-    [key: string]: string;
+    redirect: boolean;
+    loginFailed: boolean;
+    [key: string]: string | boolean;
 }
 
-class LogIn extends React.Component<{}, State> {
-    constructor(props: {}) {
+interface Props {
+    api: string;
+}
+
+class LogIn extends React.Component<Props, State> {
+    constructor(props: Props) {
         super(props);
         this.state = {
             userName: "",
-            userPassword: ""
+            userPassword: "",
+            redirect: false,
+            loginFailed: false
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,8 +34,24 @@ class LogIn extends React.Component<{}, State> {
     }
 
     public handleSubmit(event: any) {
-        console.log(this.state.userName);
-        console.log(this.state.userPassword);
+        fetch(this.props.api + "login", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "username": this.state.userName,
+                "password": this.state.userPassword
+            }
+        })
+            .then(response => {
+                if (response.ok) {
+                    this.setState({ redirect: true });
+                    return response.json();
+                } else {
+                    this.setState({ loginFailed: true });
+                    return response.json();
+                }
+            })
+            .then(data => console.log(data))
         event.preventDefault();
     }
 
@@ -55,4 +80,10 @@ class LogIn extends React.Component<{}, State> {
     }
 }
 
-export default LogIn;
+function mapStatetoProps(state: any) {
+    return {
+        api: state.tempReducer.api
+    }
+}
+
+export default connect(mapStatetoProps)(LogIn);
