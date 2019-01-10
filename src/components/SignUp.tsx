@@ -86,17 +86,16 @@ class SignUp extends React.Component<Props, State> {
               useremail: this.state.userEmail,
               userpassword: this.state.userPassword
             })
-          })
-            .then(response => {
-              if (response.ok) {
-                this.setState({ redirect: true })
-                return response.json();
-              } else {
-                this.setState({ registrationFailed: true });
-                this.setState({ regFailedStatus: response.status })
-                return response.json();
-              }
-            });
+          }).then(response => {
+            if (response.ok) {
+              this.setState({ redirect: true });
+              return response.json();
+            } else {
+              this.setState({ registrationFailed: true });
+              this.setState({ regFailedStatus: response.status });
+              return response.json();
+            }
+          });
         }
       });
   }
@@ -133,11 +132,15 @@ class SignUp extends React.Component<Props, State> {
     let registrationAlert;
 
     if (this.state.redirect) {
-      return <Redirect to='/login' />
+      return <Redirect to="/login" />;
     }
 
     if (this.state.registrationFailed) {
-      registrationAlert = <Alert color="danger">Registration has failed - Status {this.state.regFailedStatus}</Alert>;
+      registrationAlert = (
+        <Alert color="danger">
+          Registration has failed - Status {this.state.regFailedStatus}
+        </Alert>
+      );
     }
 
     return (
@@ -259,10 +262,10 @@ class SignUp extends React.Component<Props, State> {
   }
 }
 
-function mapStatetoProps(state: any) {
+function mapStateToProps(state: any) {
   return {
-    api: state.tempReducer.api
+    api: state.user.api
   };
 }
 
-export default connect(mapStatetoProps)(SignUp);
+export default connect(mapStateToProps)(SignUp);

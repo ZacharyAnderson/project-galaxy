@@ -26,5 +26,7 @@ const routing = (
   </Provider>
 );
 
+console.log(store.getState());
+
 ReactDOM.render(routing, document.getElementById("root") as HTMLElement);
 registerServiceWorker();
