@@ -264,7 +264,7 @@ class SignUp extends React.Component<Props, State> {
 
 function mapStateToProps(state: any) {
   return {
-    api: state.user.api
+    api: state.api.api
   };
 }
 

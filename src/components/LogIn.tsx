@@ -10,7 +10,7 @@ import {
     Label
 } from "reactstrap";
 import { bindActionCreators } from "redux";
-import * as actions from "../actions/actions";
+import { loginRequest } from '../actions/actions';
 import "./LogIn.css";
 
 interface State {
@@ -23,6 +23,7 @@ interface State {
 
 interface Props {
     api: string;
+    loginRequest: (username: string, userpassword: string, baseUrl: string) => any;
 }
 
 class LogIn extends React.Component<Props, State> {
@@ -44,24 +45,25 @@ class LogIn extends React.Component<Props, State> {
     }
 
     public handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-        fetch(this.props.api + "login", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                username: this.state.userName,
-                password: this.state.userPassword
-            }
-        })
-            .then(response => {
-                if (response.ok) {
-                    this.setState({ redirect: true });
-                    return response.json();
-                } else {
-                    this.setState({ loginFailed: true });
-                    return response.json();
-                }
-            })
-            .then(data => console.log(data));
+        // fetch(this.props.api + "login", {
+        //     method: "GET",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //         username: this.state.userName,
+        //         password: this.state.userPassword
+        //     }
+        // })
+        //     .then(response => {
+        //         if (response.ok) {
+        //             this.setState({ redirect: true });
+        //             return response.json();
+        //         } else {
+        //             this.setState({ loginFailed: true });
+        //             return response.json();
+        //         }
+        //     })
+        //     .then(data => console.log(data));
+        this.props.loginRequest(this.state.userName, this.state.userPassword, this.props.api);
         event.preventDefault();
     }
 
@@ -105,13 +107,13 @@ class LogIn extends React.Component<Props, State> {
 
 function mapStateToProps(state: any) {
     return {
-        api: state.user.api
+        api: state.api.api
     };
 }
 
 function mapDispatchToProps(dispatch: any) {
     return {
-        actions: bindActionCreators(actions, dispatch)
+        loginRequest: bindActionCreators(loginRequest, dispatch)
     };
 }
 
