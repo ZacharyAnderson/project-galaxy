@@ -123,7 +123,7 @@ class SignUp extends React.Component<Props, State> {
     }
   }
 
-  public handleSubmit(event: any) {
+  public handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     this.registerUser(this.state.userName, this.state.userEmail);
     event.preventDefault();
   }
