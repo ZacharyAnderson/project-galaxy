@@ -11,14 +11,20 @@ import {
   NavLink,
   UncontrolledDropdown
 } from "reactstrap";
-import "./NavBar.css";
+import "./component.css";
 
 interface State {
   isLoggedIn: boolean;
 }
 
-class NavBar extends React.Component<{}, State> {
-  constructor(props: {}) {
+export interface ReduxStateProps {
+  isLoggedIn: boolean;
+}
+
+type Props = ReduxStateProps;
+
+export class NavBarComponent extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       isLoggedIn: false
@@ -27,8 +33,7 @@ class NavBar extends React.Component<{}, State> {
 
   public render() {
     let user;
-
-    if (this.state.isLoggedIn) {
+    if (this.props.isLoggedIn) {
       user = (
         <UncontrolledDropdown className="float-right">
           <DropdownToggle nav={true} caret={true}>
@@ -78,4 +83,3 @@ class NavBar extends React.Component<{}, State> {
   }
 }
 
-export default NavBar;

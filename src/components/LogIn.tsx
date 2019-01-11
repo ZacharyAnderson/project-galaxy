@@ -1,5 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import {
     Button,
     Card,
@@ -23,6 +24,8 @@ interface State {
 
 interface Props {
     api: string;
+    accessToken: string;
+    isLoggedIn: boolean;
     loginRequest: (username: string, userpassword: string, baseUrl: string) => any;
 }
 
@@ -64,10 +67,15 @@ class LogIn extends React.Component<Props, State> {
         //     })
         //     .then(data => console.log(data));
         this.props.loginRequest(this.state.userName, this.state.userPassword, this.props.api);
+        console.log(this.props.accessToken)
         event.preventDefault();
     }
 
     public render() {
+        if (this.props.isLoggedIn) {
+            return <Redirect to="/" />
+        }
+
         return (
             <Container>
                 <Label className="label-header">Sign in to Project Galaxy</Label>
@@ -107,7 +115,9 @@ class LogIn extends React.Component<Props, State> {
 
 function mapStateToProps(state: any) {
     return {
-        api: state.api.api
+        api: state.api.api,
+        accessToken: state.user.accessToken,
+        isLoggedIn: state.user.isLoggedIn
     };
 }
 
