@@ -10,7 +10,7 @@ import {
   InputGroup,
   InputGroupAddon
 } from "reactstrap";
-import './AbvCalculatorCard.css';
+import "./component.css";
 
 interface State {
   startingGravity: number;
@@ -19,7 +19,7 @@ interface State {
   isSubmitted: boolean;
 }
 
-class AbvCalculatorCard extends React.Component<{}, State> {
+export class AbvCalculatorCard extends React.Component<{}, State> {
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -92,4 +92,3 @@ class AbvCalculatorCard extends React.Component<{}, State> {
   }
 }
 
-export default AbvCalculatorCard;

@@ -1,7 +1,7 @@
 import * as React from "react";
-import AbvCalculatorCard from "../components/AbvCalculatorCard";
+import { AbvCalculatorCard } from "../AbvCalculatorCard/component";
 
-class Home extends React.Component<{}> {
+export class Home extends React.Component<{}> {
   public render() {
     return (
       <div>
@@ -11,4 +11,4 @@ class Home extends React.Component<{}> {
   }
 }
 
-export default Home;
+

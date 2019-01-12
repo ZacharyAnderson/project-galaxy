@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardText, Col, Container, Row } from 'reactstrap';
-import './CreateAccountCard.css';
+import './component.css';
 
-class CreateAccountCard extends React.Component<{}> {
+export class CreateAccountCard extends React.Component<{}> {
     constructor(props: {}) {
         super(props);
     }
@@ -29,5 +29,3 @@ class CreateAccountCard extends React.Component<{}> {
         );
     }
 }
-
-export default CreateAccountCard;

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Col, Container, Jumbotron, Row } from 'reactstrap';
-import CreateAccountCard from './CreateAccountCard';
-import LogIn from './LogIn';
+import { CreateAccountCard } from '../CreateAccountCard/component';
+import LogIn from '../LogIn';
 
-class LogInPage extends React.Component<{}> {
+export class LogInPage extends React.Component<{}> {
     constructor(props: {}) {
         super(props);
     }
@@ -29,5 +29,3 @@ class LogInPage extends React.Component<{}> {
         );
     }
 }
-
-export default LogInPage;
