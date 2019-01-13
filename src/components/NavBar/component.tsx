@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import {
   Col,
   DropdownItem,
@@ -46,9 +46,18 @@ export class NavBarComponent extends React.Component<Props, State> {
       );
     } else {
       user = (
-        <NavLink className="float-right" tag={Link} to="/signup">
-          Sign Up
-        </NavLink>
+        <div>
+          <Col>
+            <NavLink className="float-right" tag={Link} to="/login">
+              Login
+            </NavLink>
+          </Col>
+          <Col>
+            <NavLink className="float-right" tag={Link} to="/signup">
+              Sign Up
+            </NavLink>
+          </Col>
+        </div>
       );
     }
     return (
@@ -68,18 +77,20 @@ export class NavBarComponent extends React.Component<Props, State> {
             />
           </Col>
           <Col sm="1.5">
-            <NavLink tag={Link} to="/">Recipes</NavLink>
+            <NavLink tag={Link} to="/">
+              Recipes
+            </NavLink>
           </Col>
           <Col sm="1.5">
-            <NavLink tag={Link} to="/tool-center">Tool-Center</NavLink>
+            <NavLink tag={Link} to="/tool-center">
+              Tool-Center
+            </NavLink>
           </Col>
           <Col>
-            <NavLink className="float-right" tag={Link} to="/login">Login</NavLink>
+            <Col className="float-right">{user}</Col>
           </Col>
-          <Col sm="1.5" >{user}</Col>
         </Navbar>
       </div>
     );
   }
 }
-
