@@ -13,22 +13,25 @@ import {
 } from "reactstrap";
 import "./component.css";
 
-interface State {
-  isLoggedIn: boolean;
-}
-
 export interface ReduxStateProps {
   isLoggedIn: boolean;
 }
 
-type Props = ReduxStateProps;
+export interface ReduxDispatchProps {
+  removeLoginToken: () => void;
+}
 
-export class NavBarComponent extends React.Component<Props, State> {
+type Props = ReduxStateProps & ReduxDispatchProps;
+
+export class NavBarComponent extends React.Component<Props> {
   constructor(props: Props) {
     super(props);
-    this.state = {
-      isLoggedIn: false
-    };
+    this.dropdownOnClick = this.dropdownOnClick.bind(this);
+  }
+
+  public dropdownOnClick(event: React.MouseEvent<HTMLElement>) {
+    this.props.removeLoginToken();
+    event.preventDefault();
   }
 
   public render() {
@@ -41,6 +44,8 @@ export class NavBarComponent extends React.Component<Props, State> {
           </DropdownToggle>
           <DropdownMenu right={true}>
             <DropdownItem>Settings</DropdownItem>
+            <DropdownItem divider={true} />
+            <DropdownItem onClick={this.dropdownOnClick}>Log Out</DropdownItem>
           </DropdownMenu>
         </UncontrolledDropdown>
       );

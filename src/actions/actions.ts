@@ -2,9 +2,9 @@ import * as types from "./actionTypes";
 
 export function addLoginToken(json: string) {
   return {
-    type: types.LOGIN, payload: json
-
-  }
+    type: types.LOGIN,
+    payload: json
+  };
 }
 
 export function loginRequest(
@@ -17,8 +17,8 @@ export function loginRequest(
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "username": userName,
-        "password": userPassword
+        username: userName,
+        password: userPassword
       }
     })
       .then(response => {
@@ -29,7 +29,14 @@ export function loginRequest(
         }
       })
       .then(data => {
-        dispatch(addLoginToken(data.access_token))
+        dispatch(addLoginToken(data.access_token));
       });
+  };
+}
+
+export function removeLoginToken() {
+  return {
+    type: types.LOGOUT,
+    payload: {}
   };
 }

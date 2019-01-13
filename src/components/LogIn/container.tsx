@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import { bindActionCreators, Dispatch } from "redux";
 import { loginRequest } from "../../actions/actions";
 import { getApiUrl } from "../../reducers/apiReducer";
 import { GlobalState } from "../../reducers/initialStateInterface";
@@ -11,6 +11,11 @@ import {
   ReduxStateProps
 } from "./component";
 
+interface MyActionType {
+  type: "LOGIN";
+  payload: string;
+}
+
 function mapStateToProps(state: GlobalState): ReduxStateProps {
   return {
     api: getApiUrl(state),
@@ -19,7 +24,7 @@ function mapStateToProps(state: GlobalState): ReduxStateProps {
   };
 }
 
-function mapDispatchToProps(dispatch: any) {
+function mapDispatchToProps(dispatch: Dispatch<MyActionType>) {
   return {
     loginRequest: bindActionCreators(loginRequest, dispatch)
   };
