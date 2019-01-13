@@ -25,6 +25,10 @@ export default function userReducer(
   }
 }
 
-export function getisLoggedIn(state: GlobalState): boolean {
+export function getIsLoggedIn(state: GlobalState): boolean {
   return state.user && state.user.isLoggedIn;
+}
+
+export function getAccessToken(state: GlobalState): string {
+  return state.user && state.user.accessToken;
 }

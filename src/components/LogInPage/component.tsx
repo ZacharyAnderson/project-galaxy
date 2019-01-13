@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Col, Container, Jumbotron, Row } from 'reactstrap';
 import { CreateAccountCard } from '../CreateAccountCard/component';
-import LogIn from '../LogIn';
+import { LogIn } from '../LogIn/container';
 
 export class LogInPage extends React.Component<{}> {
     constructor(props: {}) {
