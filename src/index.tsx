@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import App from "./App";
 import { LogInPage } from "./components/LogInPage/component";
-import SignUp from "./components/SignUp";
+import { SignUp } from "./components/SignUp/container";
 import { ToolCenter } from "./components/ToolCenter/component";
 import "./index.css";
 import registerServiceWorker from "./registerServiceWorker";

@@ -1,5 +1,4 @@
 import * as React from "react";
-import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import {
   Alert,
@@ -18,7 +17,7 @@ import {
   Label,
   Row
 } from "reactstrap";
-import "./SignUp.css";
+import "./component.css";
 
 interface State {
   userName: string;
@@ -33,11 +32,13 @@ interface State {
   [key: string]: string | boolean | number;
 }
 
-interface Props {
+export interface ReduxStateProps {
   api: string;
 }
 
-class SignUp extends React.Component<Props, State> {
+type Props = ReduxStateProps;
+
+export class SignUpComponent extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -261,11 +262,3 @@ class SignUp extends React.Component<Props, State> {
     );
   }
 }
-
-function mapStateToProps(state: any) {
-  return {
-    api: state.api.api
-  };
-}
-
-export default connect(mapStateToProps)(SignUp);
