@@ -17,6 +17,7 @@ import {
   Label,
   Row
 } from "reactstrap";
+import { NavBar } from "../NavBar/container";
 import "./component.css";
 
 interface State {
@@ -58,47 +59,52 @@ export class SignUpComponent extends React.Component<Props, State> {
   }
 
   public registerUser(username: string, useremail: string): any {
-    Promise.all([
-      fetch(this.props.api + "registration/username/" + username),
-      fetch(this.props.api + "registration/email/" + useremail)
-    ])
-      .then(([response1, response2]) =>
-        Promise.all([response1.json(), response2.json()])
-      )
-      .then(([data1, data2]) => {
-        this.setState({ uniqueEmail: data1.isUnique });
-        this.setState({ uniqueUsername: data2.isUnique });
-        if (this.state.uniqueUsername === false) {
-          console.log("This username already exists!");
-        } else if (this.state.uniqueEmail === false) {
-          console.log("this email is already in use!");
-        } else if (this.state.userPassword !== this.state.userPassword2) {
-          console.log("Looks like your passwords don't match.");
-        } else {
-          console.log("Registering " + this.state.userName);
-          fetch(this.props.api + "registration", {
-            method: "POST",
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-              username: this.state.userName,
-              useremail: this.state.userEmail,
-              userpassword: this.state.userPassword
-            })
-          }).then(response => {
-            if (response.ok) {
-              this.setState({ redirect: true });
-              return response.json();
-            } else {
-              this.setState({ registrationFailed: true });
-              this.setState({ regFailedStatus: response.status });
-              return response.json();
-            }
-          });
-        }
-      });
+    if (username !== "" && useremail !== "") {
+      Promise.all([
+        fetch(this.props.api + "registration/username/" + username),
+        fetch(this.props.api + "registration/email/" + useremail)
+      ])
+        .then(([response1, response2]) =>
+          Promise.all([response1.json(), response2.json()])
+        )
+        .then(([data1, data2]) => {
+          this.setState({ uniqueEmail: data1.isUnique });
+          this.setState({ uniqueUsername: data2.isUnique });
+          if (this.state.uniqueUsername === false) {
+            console.log("This username already exists!");
+          } else if (this.state.uniqueEmail === false) {
+            console.log("this email is already in use!");
+          } else if (this.state.userPassword !== this.state.userPassword2) {
+            console.log("Looks like your passwords don't match.");
+          } else {
+            console.log("Registering " + this.state.userName);
+            fetch(this.props.api + "registration", {
+              method: "POST",
+              headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                username: this.state.userName,
+                useremail: this.state.userEmail,
+                userpassword: this.state.userPassword
+              })
+            }).then(response => {
+              if (response.ok) {
+                this.setState({ redirect: true });
+                return response.json();
+              } else {
+                this.setState({ registrationFailed: true });
+                this.setState({ regFailedStatus: response.status });
+                return response.json();
+              }
+            });
+          }
+        });
+    } else {
+      this.setState({ registrationFailed: true });
+      this.setState({ regFailedStatus: 404 });
+    }
   }
 
   public handleChange(event: React.FormEvent<HTMLInputElement>) {
@@ -146,6 +152,7 @@ export class SignUpComponent extends React.Component<Props, State> {
 
     return (
       <div>
+        <NavBar />
         <Jumbotron>
           <Container>
             <Row>

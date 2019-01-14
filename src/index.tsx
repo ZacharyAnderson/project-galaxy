@@ -1,9 +1,10 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import App from "./App";
+import { GenericNotFound } from "./components/GenericNotFound";
 import { LogInPage } from "./components/LogInPage/component";
 import { SignUp } from "./components/SignUp/container";
 import { ToolCenter } from "./components/ToolCenter/component";
@@ -15,14 +16,17 @@ const store = configureStore();
 
 const routing = (
   <Provider store={store}>
-    <Router>
+    <BrowserRouter>
       <div>
-        <Route path="/" component={App} />
-        <Route path="/tool-center" component={ToolCenter} />
-        <Route path="/signup" component={SignUp} />
-        <Route path="/login" component={LogInPage} />
+        <Switch>
+          <Route exact={true} path="/" component={App} />
+          <Route exact={true} path="/tool-center" component={ToolCenter} />
+          <Route exact={true} path="/signup" component={SignUp} />
+          <Route exact={true} path="/login" component={LogInPage} />
+          <Route component={GenericNotFound} />
+        </Switch>
       </div>
-    </Router>
+    </BrowserRouter>
   </Provider>
 );
 
