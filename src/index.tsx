@@ -6,6 +6,7 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import App from "./App";
 import { GenericNotFound } from "./components/GenericNotFound";
 import { LogInPage } from "./components/LogInPage/component";
+import { Settings } from "./components/Settings/container";
 import { SignUp } from "./components/SignUp/container";
 import { ToolCenter } from "./components/ToolCenter/component";
 import "./index.css";
@@ -23,6 +24,7 @@ const routing = (
           <Route exact={true} path="/tool-center" component={ToolCenter} />
           <Route exact={true} path="/signup" component={SignUp} />
           <Route exact={true} path="/login" component={LogInPage} />
+          <Route exact={true} path="/:user/settings" component={Settings} />
           <Route component={GenericNotFound} />
         </Switch>
       </div>
