@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import {
   Col,
   DropdownItem,
@@ -21,12 +21,20 @@ export interface ReduxDispatchProps {
   removeLoginToken: () => void;
 }
 
+export interface State {
+  isGoToSettings: boolean;
+}
+
 type Props = ReduxStateProps & ReduxDispatchProps;
 
-export class NavBarComponent extends React.Component<Props> {
+export class NavBarComponent extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
+    this.state = {
+      isGoToSettings: false
+    };
     this.dropdownOnClick = this.dropdownOnClick.bind(this);
+    this.goToSettings = this.goToSettings.bind(this);
   }
 
   public dropdownOnClick(event: React.MouseEvent<HTMLElement>) {
@@ -34,8 +42,17 @@ export class NavBarComponent extends React.Component<Props> {
     event.preventDefault();
   }
 
+  public goToSettings(event: React.MouseEvent<HTMLElement>) {
+    this.setState({ isGoToSettings: true });
+  }
+
   public render() {
     let user;
+
+    if (this.state.isGoToSettings) {
+      return <Redirect to="/settings" />;
+    }
+
     if (this.props.isLoggedIn) {
       user = (
         <UncontrolledDropdown className="float-right">
@@ -43,7 +60,7 @@ export class NavBarComponent extends React.Component<Props> {
             User
           </DropdownToggle>
           <DropdownMenu right={true}>
-            <DropdownItem>Settings</DropdownItem>
+            <DropdownItem onClick={this.goToSettings}>Settings</DropdownItem>
             <DropdownItem divider={true} />
             <DropdownItem onClick={this.dropdownOnClick}>Log Out</DropdownItem>
           </DropdownMenu>

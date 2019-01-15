@@ -24,7 +24,7 @@ const routing = (
           <Route exact={true} path="/tool-center" component={ToolCenter} />
           <Route exact={true} path="/signup" component={SignUp} />
           <Route exact={true} path="/login" component={LogInPage} />
-          <Route exact={true} path="/:user/settings" component={Settings} />
+          <Route exact={true} path="/settings" component={Settings} />
           <Route component={GenericNotFound} />
         </Switch>
       </div>
