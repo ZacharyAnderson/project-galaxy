@@ -4,19 +4,29 @@ import { GlobalState } from "./initialStateInterface";
 
 const init: UserState = {
   accessToken: "",
+  username: "",
+  userEmail: "",
   isLoggedIn: false
 };
 
+interface LoginObject {
+  access_token: string;
+  current_user: string;
+  email: string;
+}
+
 export default function userReducer(
   state = init,
-  action: { type: any; payload: any }
+  action: { type: any; payload: LoginObject }
 ) {
   let newState;
   switch (action.type) {
     case LOGIN:
       console.log("LOGIN Action");
       newState = {
-        accessToken: action.payload,
+        accessToken: action.payload.access_token,
+        current_user: action.payload.current_user,
+        email: action.payload.email,
         isLoggedIn: true
       };
       return newState;

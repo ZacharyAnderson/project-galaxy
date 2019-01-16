@@ -1,6 +1,6 @@
 import * as types from "./actionTypes";
 
-export function addLoginToken(json: string) {
+export function addLoginToken(json: object) {
   return {
     type: types.LOGIN,
     payload: json
@@ -12,7 +12,7 @@ export function loginRequest(
   userPassword: string,
   baseUrl: string
 ) {
-  return (dispatch: (arg0: { type: string; payload: string }) => void) => {
+  return (dispatch: (arg0: { type: string; payload: object }) => void) => {
     return fetch(baseUrl + "login", {
       method: "GET",
       headers: {
@@ -29,7 +29,7 @@ export function loginRequest(
         }
       })
       .then(data => {
-        dispatch(addLoginToken(data.access_token));
+        dispatch(addLoginToken(data));
       });
   };
 }

@@ -4,6 +4,8 @@ export interface ApiState {
 
 export interface UserState {
   accessToken: string;
+  username: string;
+  userEmail: string;
   isLoggedIn: boolean;
 }
 
