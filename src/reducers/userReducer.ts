@@ -4,8 +4,8 @@ import { GlobalState } from "./initialStateInterface";
 
 const init: UserState = {
   accessToken: "",
-  username: "",
-  userEmail: "",
+  current_user: "",
+  email: "",
   isLoggedIn: false
 };
 
@@ -29,6 +29,7 @@ export default function userReducer(
         email: action.payload.email,
         isLoggedIn: true
       };
+      console.log(newState);
       return newState;
     case LOGOUT:
       console.log("LOGOUT Action");
@@ -48,4 +49,12 @@ export function getIsLoggedIn(state: GlobalState): boolean {
 
 export function getAccessToken(state: GlobalState): string {
   return state.user && state.user.accessToken;
+}
+
+export function getUserName(state: GlobalState): string {
+  return state.user && state.user.current_user;
+}
+
+export function getUserEmail(state: GlobalState): string {
+  return state.user && state.user.email;
 }

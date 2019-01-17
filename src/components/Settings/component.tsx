@@ -3,6 +3,8 @@ import * as React from "react";
 export interface ReduxStateProps {
   api: string;
   accessToken: string;
+  current_user: string;
+  email: string;
 }
 
 interface State {
@@ -17,7 +19,6 @@ export class SettingsComponent extends React.Component<Props, State> {
   }
 
   public componentDidMount() {
-    console.log(this.props.accessToken);
     fetch(this.props.api + "user", {
       method: "GET",
       headers: {
@@ -33,8 +34,8 @@ export class SettingsComponent extends React.Component<Props, State> {
     return (
       <div>
         <h1>TEMPLATE FOR NOW</h1>
-        <h3>USER:</h3>
-        <h3>EMAIL:</h3>
+        <h3>USER: {this.props.current_user}</h3>
+        <h3>EMAIL: {this.props.email}</h3>
       </div>
     );
   }
