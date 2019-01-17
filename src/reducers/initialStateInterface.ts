@@ -7,6 +7,7 @@ export interface UserState {
   current_user: string;
   email: string;
   isLoggedIn: boolean;
+  avatar: string;
 }
 
 export interface GlobalState {

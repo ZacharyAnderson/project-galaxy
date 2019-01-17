@@ -1,10 +1,12 @@
 import * as React from "react";
+import { Card, Media } from "reactstrap";
 
 export interface ReduxStateProps {
   api: string;
   accessToken: string;
   current_user: string;
   email: string;
+  avatar: string;
 }
 
 interface State {
@@ -33,9 +35,18 @@ export class SettingsComponent extends React.Component<Props, State> {
   public render() {
     return (
       <div>
-        <h1>TEMPLATE FOR NOW</h1>
-        <h3>USER: {this.props.current_user}</h3>
-        <h3>EMAIL: {this.props.email}</h3>
+        <Card>
+          <Media>
+            <Media left={true} href="#">
+              <img src="https://www.gravatar.com/avatar/1aedb8d9dc4751e229a335e371db8058?d=identicon&s=80" />
+            </Media>
+            <Media body={true}>
+              <Media heading={true}>User Settings</Media>
+              User: {this.props.current_user} <br />
+              Email: {this.props.email} <br />
+            </Media>
+          </Media>
+        </Card>
       </div>
     );
   }

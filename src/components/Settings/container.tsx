@@ -3,6 +3,7 @@ import { getApiUrl } from "../../reducers/apiReducer";
 import { GlobalState } from "../../reducers/initialStateInterface";
 import {
   getAccessToken,
+  getAvatar,
   getUserEmail,
   getUserName
 } from "../../reducers/userReducer";
@@ -13,7 +14,8 @@ function mapStateToProps(state: GlobalState): ReduxStateProps {
     api: getApiUrl(state),
     accessToken: getAccessToken(state),
     current_user: getUserName(state),
-    email: getUserEmail(state)
+    email: getUserEmail(state),
+    avatar: getAvatar(state)
   };
 }
 

@@ -6,6 +6,7 @@ const init: UserState = {
   accessToken: "",
   current_user: "",
   email: "",
+  avatar: "",
   isLoggedIn: false
 };
 
@@ -13,6 +14,7 @@ interface LoginObject {
   access_token: string;
   current_user: string;
   email: string;
+  avatar: string;
 }
 
 export default function userReducer(
@@ -27,6 +29,7 @@ export default function userReducer(
         accessToken: action.payload.access_token,
         current_user: action.payload.current_user,
         email: action.payload.email,
+        avatarUrl: action.payload.avatar,
         isLoggedIn: true
       };
       console.log(newState);
@@ -57,4 +60,8 @@ export function getUserName(state: GlobalState): string {
 
 export function getUserEmail(state: GlobalState): string {
   return state.user && state.user.email;
+}
+
+export function getAvatar(state: GlobalState): string {
+  return state.user && state.user.avatar;
 }
