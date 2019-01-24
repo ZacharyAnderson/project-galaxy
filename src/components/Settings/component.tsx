@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Redirect } from "react-router-dom";
 import { Card, Media } from "reactstrap";
 
 export interface ReduxStateProps {
@@ -7,6 +8,7 @@ export interface ReduxStateProps {
   current_user: string;
   email: string;
   avatar: string;
+  isLoggedIn: boolean;
 }
 
 interface State {
@@ -20,25 +22,17 @@ export class SettingsComponent extends React.Component<Props, State> {
     super(props);
   }
 
-  public componentDidMount() {
-    fetch(this.props.api + "user", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        Authorization: "Bearer " + this.props.accessToken
-      }
-    })
-      .then(response => response.json)
-      .then(data => console.log(data));
-  }
-
   public render() {
+    if (!this.props.isLoggedIn) {
+      return <Redirect to="/" />;
+    }
+
     return (
       <div>
         <Card>
           <Media>
             <Media left={true} href="#">
-              <img src="https://www.gravatar.com/avatar/1aedb8d9dc4751e229a335e371db8058?d=identicon&s=80" />
+              <img src={this.props.avatar} />
             </Media>
             <Media body={true}>
               <Media heading={true}>User Settings</Media>

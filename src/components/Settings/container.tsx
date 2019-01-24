@@ -4,6 +4,7 @@ import { GlobalState } from "../../reducers/initialStateInterface";
 import {
   getAccessToken,
   getAvatar,
+  getIsLoggedIn,
   getUserEmail,
   getUserName
 } from "../../reducers/userReducer";
@@ -15,7 +16,8 @@ function mapStateToProps(state: GlobalState): ReduxStateProps {
     accessToken: getAccessToken(state),
     current_user: getUserName(state),
     email: getUserEmail(state),
-    avatar: getAvatar(state)
+    avatar: getAvatar(state),
+    isLoggedIn: getIsLoggedIn(state)
   };
 }
 

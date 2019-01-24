@@ -29,15 +29,17 @@ export default function userReducer(
         accessToken: action.payload.access_token,
         current_user: action.payload.current_user,
         email: action.payload.email,
-        avatarUrl: action.payload.avatar,
+        avatar: action.payload.avatar,
         isLoggedIn: true
       };
-      console.log(newState);
       return newState;
     case LOGOUT:
       console.log("LOGOUT Action");
       newState = {
         accessToken: "",
+        current_user: "",
+        email: "",
+        avatar: "",
         isLoggedIn: false
       };
       return newState;
