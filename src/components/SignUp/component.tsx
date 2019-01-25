@@ -30,6 +30,7 @@ interface State {
   redirect: boolean;
   registrationFailed: boolean;
   regFailedStatus: number;
+  regFailedMessage: string;
   [key: string]: string | boolean | number;
 }
 
@@ -51,7 +52,8 @@ export class SignUpComponent extends React.Component<Props, State> {
       uniqueEmail: false,
       redirect: false,
       registrationFailed: false,
-      regFailedStatus: 0
+      regFailedStatus: 0,
+      regFailedMessage: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -71,11 +73,32 @@ export class SignUpComponent extends React.Component<Props, State> {
           this.setState({ uniqueEmail: data1.isUnique });
           this.setState({ uniqueUsername: data2.isUnique });
           if (this.state.uniqueUsername === false) {
-            console.log("This username already exists!");
+            this.setState({
+              regFailedMessage: "This username already exists!"
+            });
+            this.setState({ registrationFailed: true });
           } else if (this.state.uniqueEmail === false) {
-            console.log("this email is already in use!");
+            this.setState({
+              regFailedMessage: "this email is already in use!"
+            });
+            this.setState({ registrationFailed: true });
+          } else if (this.state.userPassword.search(/[A-Z]/) === -1) {
+            this.setState({
+              regFailedMessage:
+                "Your password does not contain an uppercase character."
+            });
+            this.setState({ registrationFailed: true });
+          } else if (this.state.userPassword.search(/[0-9]/) === -1) {
+            this.setState({
+              regFailedMessage:
+                "Your password does not contain a numerical value."
+            });
+            this.setState({ registrationFailed: true });
           } else if (this.state.userPassword !== this.state.userPassword2) {
-            console.log("Looks like your passwords don't match.");
+            this.setState({
+              regFailedMessage: "Looks like your passwords don't match."
+            });
+            this.setState({ registrationFailed: true });
           } else {
             console.log("Registering " + this.state.userName);
             fetch(this.props.api + "registration", {
@@ -143,11 +166,19 @@ export class SignUpComponent extends React.Component<Props, State> {
     }
 
     if (this.state.registrationFailed) {
-      registrationAlert = (
-        <Alert color="danger">
-          Registration has failed - Status {this.state.regFailedStatus}
-        </Alert>
-      );
+      if (this.state.regFailedStatus === 0) {
+        registrationAlert = (
+          <Alert color="danger">
+            Registration has failed. <br /> {this.state.regFailedMessage}
+          </Alert>
+        );
+      } else {
+        registrationAlert = (
+          <Alert color="danger">
+            Registration has failed - Status {this.state.regFailedStatus}
+          </Alert>
+        );
+      }
     }
 
     return (
@@ -222,9 +253,10 @@ export class SignUpComponent extends React.Component<Props, State> {
                             !(
                               this.state.userPassword ===
                               this.state.userPassword2
-                            ) &&
-                            this.state.userPassword !== "" &&
-                            this.state.userPassword2 !== ""
+                            ) && this.state.userPassword !== ""
+                            // this.state.userPassword2 !== "" &&
+                            // this.state.userPassword.search(/[A-Z]/) === -1 &&
+                            // this.state.userPassword.search(/[0-9]/) === -1
                           }
                         />
                         <FormFeedback>The passwords aren't valid!</FormFeedback>
