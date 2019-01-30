@@ -1,8 +1,31 @@
 import * as types from "./actionTypes";
 
-export function addLoginToken(json: object) {
+export interface LoginObject {
+  access_token: string;
+  current_user: string;
+  email: string;
+  avatar: string;
+}
+
+export interface LoginFailedObject {
+  failedMessage: string;
+}
+
+export type LoginAction =
+  | { type: "LOGIN_SUCCESS"; payload: LoginObject }
+  | { type: "LOGIN_FAILURE"; payload: LoginFailedObject }
+  | { type: "LOGOUT"; payload: void };
+
+export function LoginSuccess(json: object) {
   return {
-    type: types.LOGIN,
+    type: types.LOGIN_SUCCESS,
+    payload: json
+  };
+}
+
+export function LoginFailure(json: object) {
+  return {
+    type: types.LOGIN_FAILURE,
     payload: json
   };
 }
@@ -12,6 +35,7 @@ export function loginRequest(
   userPassword: string,
   baseUrl: string
 ) {
+  let loginStatus: boolean;
   return (dispatch: (arg0: { type: string; payload: object }) => void) => {
     return fetch(baseUrl + "login", {
       method: "GET",
@@ -23,13 +47,19 @@ export function loginRequest(
     })
       .then(response => {
         if (response.ok) {
+          loginStatus = true;
           return response.json();
         } else {
+          loginStatus = false;
           return response.json();
         }
       })
       .then(data => {
-        dispatch(addLoginToken(data));
+        if (loginStatus) {
+          dispatch(LoginSuccess(data));
+        } else {
+          dispatch(LoginFailure(data));
+        }
       });
   };
 }

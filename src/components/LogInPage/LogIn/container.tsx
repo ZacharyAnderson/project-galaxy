@@ -1,10 +1,10 @@
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
-import { loginRequest } from "../../actions/actions";
-import { getApiUrl } from "../../reducers/apiReducer";
-import { GlobalState } from "../../reducers/initialStateInterface";
-import { getAccessToken } from "../../reducers/userReducer";
-import { getIsLoggedIn } from "../../reducers/userReducer";
+import { loginRequest } from "../../../actions/actions";
+import { getApiUrl } from "../../../reducers/apiReducer";
+import { GlobalState } from "../../../reducers/initialStateInterface";
+import { getAccessToken } from "../../../reducers/userReducer";
+import { getIsLoggedIn } from "../../../reducers/userReducer";
 import {
   LogInComponent,
   ReduxDispatchProps,

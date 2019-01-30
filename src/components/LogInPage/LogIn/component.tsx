@@ -15,7 +15,6 @@ interface State {
   userName: string;
   userPassword: string;
   redirect: boolean;
-  loginFailed: boolean;
   [key: string]: string | boolean;
 }
 
@@ -40,8 +39,7 @@ export class LogInComponent extends React.Component<Props, State> {
     this.state = {
       userName: "",
       userPassword: "",
-      redirect: false,
-      loginFailed: false
+      redirect: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);

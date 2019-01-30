@@ -8,6 +8,8 @@ export interface UserState {
   email: string;
   isLoggedIn: boolean;
   avatar: string;
+  loginFailed: boolean;
+  failedMessage: string;
 }
 
 export interface GlobalState {

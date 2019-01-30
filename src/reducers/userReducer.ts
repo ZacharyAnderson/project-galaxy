@@ -1,4 +1,5 @@
-import { LOGIN, LOGOUT } from "../actions/actionTypes";
+import { LoginAction } from "../actions/actions";
+import { LOGIN_FAILURE, LOGIN_SUCCESS, LOGOUT } from "../actions/actionTypes";
 import { UserState } from "./initialStateInterface";
 import { GlobalState } from "./initialStateInterface";
 
@@ -7,30 +8,29 @@ const init: UserState = {
   current_user: "",
   email: "",
   avatar: "",
-  isLoggedIn: false
+  isLoggedIn: false,
+  loginFailed: false,
+  failedMessage: ""
 };
 
-interface LoginObject {
-  access_token: string;
-  current_user: string;
-  email: string;
-  avatar: string;
-}
-
-export default function userReducer(
-  state = init,
-  action: { type: any; payload: LoginObject }
-) {
+export default function userReducer(state = init, action: LoginAction) {
   let newState;
   switch (action.type) {
-    case LOGIN:
-      console.log("LOGIN Action");
+    case LOGIN_SUCCESS:
+      console.log("LOGIN_SUCCESS Action");
       newState = {
         accessToken: action.payload.access_token,
         current_user: action.payload.current_user,
         email: action.payload.email,
         avatar: action.payload.avatar,
         isLoggedIn: true
+      };
+      return newState;
+    case LOGIN_FAILURE:
+      console.log("LOGIN_FAILURE Action");
+      newState = {
+        loginFailed: true,
+        failedMessage: action.payload.failedMessage
       };
       return newState;
     case LOGOUT:
@@ -66,4 +66,12 @@ export function getUserEmail(state: GlobalState): string {
 
 export function getAvatar(state: GlobalState): string {
   return state.user && state.user.avatar;
+}
+
+export function getLoginFailed(state: GlobalState): boolean {
+  return state.user && state.user.loginFailed;
+}
+
+export function getFailedMessaged(state: GlobalState): string {
+  return state.user && state.user.failedMessage;
 }
