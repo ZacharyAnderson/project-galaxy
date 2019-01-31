@@ -11,6 +11,11 @@ export interface LoginFailedObject {
   failedMessage: string;
 }
 
+export interface LoginResponse {
+  loggedIn: boolean;
+  loginResponse: object;
+}
+
 export type LoginAction =
   | { type: "LOGIN_SUCCESS"; payload: LoginObject }
   | { type: "LOGIN_FAILURE"; payload: LoginFailedObject }
@@ -35,7 +40,6 @@ export function loginRequest(
   userPassword: string,
   baseUrl: string
 ) {
-  let loginStatus: boolean;
   return (dispatch: (arg0: { type: string; payload: object }) => void) => {
     return fetch(baseUrl + "login", {
       method: "GET",
@@ -46,19 +50,16 @@ export function loginRequest(
       }
     })
       .then(response => {
-        if (response.ok) {
-          loginStatus = true;
-          return response.json();
-        } else {
-          loginStatus = false;
-          return response.json();
-        }
+        return {
+          loggedIn: response.ok,
+          loginResponse: response.json()
+        } as LoginResponse;
       })
       .then(data => {
-        if (loginStatus) {
-          dispatch(LoginSuccess(data));
+        if (data.loggedIn) {
+          dispatch(LoginSuccess(data.loginResponse));
         } else {
-          dispatch(LoginFailure(data));
+          dispatch(LoginFailure(data.loginResponse));
         }
       });
   };
