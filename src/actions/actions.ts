@@ -8,7 +8,7 @@ export interface LoginObject {
 }
 
 export interface LoginFailedObject {
-  failedMessage: string;
+  msg: string;
 }
 
 export interface LoginResponse {
@@ -35,6 +35,13 @@ export function LoginFailure(json: object) {
   };
 }
 
+export function removeLoginToken() {
+  return {
+    type: types.LOGOUT,
+    payload: {}
+  };
+}
+
 export function loginRequest(
   userName: string,
   userPassword: string,
@@ -57,17 +64,9 @@ export function loginRequest(
       })
       .then(data => {
         if (data.loggedIn) {
-          dispatch(LoginSuccess(data.loginResponse));
-        } else {
-          dispatch(LoginFailure(data.loginResponse));
+          return dispatch(LoginSuccess(data.loginResponse));
         }
+        return dispatch(LoginFailure(data.loginResponse));
       });
-  };
-}
-
-export function removeLoginToken() {
-  return {
-    type: types.LOGOUT,
-    payload: {}
   };
 }

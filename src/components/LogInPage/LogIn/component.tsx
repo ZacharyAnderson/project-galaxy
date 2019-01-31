@@ -9,6 +9,7 @@ import {
   Input,
   Label
 } from "reactstrap";
+import { AlertComponent } from "../../SignUp/AlertComponent";
 import "./component.css";
 
 interface State {
@@ -22,6 +23,8 @@ export interface ReduxStateProps {
   api: string;
   accessToken: string;
   isLoggedIn: boolean;
+  loginFailed: boolean;
+  failedMessage: string;
 }
 
 export interface ReduxDispatchProps {
@@ -67,6 +70,9 @@ export class LogInComponent extends React.Component<Props, State> {
     return (
       <Container>
         <Label className="label-header">Sign in to Project Galaxy</Label>
+        {this.props.loginFailed ? (
+          <AlertComponent regFailedMessage={this.props.failedMessage} />
+        ) : null}
         <Card className="card">
           <Container>
             <Form onSubmit={this.handleSubmit}>

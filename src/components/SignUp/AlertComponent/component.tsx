@@ -2,7 +2,7 @@ import * as React from "react";
 import { Alert } from "reactstrap";
 
 interface AlertComponentProps {
-  regFailedStatus: number;
+  regFailedStatus?: number;
   regFailedMessage: string;
 }
 
@@ -14,18 +14,6 @@ export class AlertComponent extends React.Component<Props> {
   }
 
   public render() {
-    if (this.props.regFailedStatus === 0) {
-      return (
-        <Alert color="danger">
-          Registration has failed. <br /> {this.props.regFailedMessage}
-        </Alert>
-      );
-    } else {
-      return (
-        <Alert color="danger">
-          Registration has failed - Status {this.props.regFailedStatus}
-        </Alert>
-      );
-    }
+    return <Alert color="danger">{this.props.regFailedMessage}</Alert>;
   }
 }

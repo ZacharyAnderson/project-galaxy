@@ -27,7 +27,6 @@ interface SignUpComponentProps {
   uniqueEmail: boolean;
   registrationFailed: boolean;
   regFailedMessage: string;
-  regFailedStatus: number;
   handleChange(event: React.FormEvent<HTMLInputElement>): void;
   handleSubmit(event: React.FormEvent<HTMLFormElement>): void;
   registerUser(username: string, useremail: string): any;
@@ -53,7 +52,6 @@ export class SignUpCard extends React.Component<Props> {
                   {this.props.registrationFailed ? (
                     <AlertComponent
                       regFailedMessage={this.props.regFailedMessage}
-                      regFailedStatus={this.props.regFailedStatus}
                     />
                   ) : null}
                   <CardBody>

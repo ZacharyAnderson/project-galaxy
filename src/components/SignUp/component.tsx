@@ -12,7 +12,6 @@ interface State {
   uniqueEmail: boolean;
   redirect: boolean;
   registrationFailed: boolean;
-  regFailedStatus: number;
   regFailedMessage: string;
   [key: string]: string | boolean | number;
 }
@@ -35,7 +34,6 @@ export class SignUpComponent extends React.Component<Props, State> {
       uniqueEmail: false,
       redirect: false,
       registrationFailed: false,
-      regFailedStatus: 0,
       regFailedMessage: ""
     };
     this.handleChange = this.handleChange.bind(this);
@@ -156,7 +154,6 @@ export class SignUpComponent extends React.Component<Props, State> {
         uniqueEmail={this.state.uniqueEmail}
         registrationFailed={this.state.registrationFailed}
         regFailedMessage={this.state.regFailedMessage}
-        regFailedStatus={this.state.regFailedStatus}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
         registerUser={this.registerUser}

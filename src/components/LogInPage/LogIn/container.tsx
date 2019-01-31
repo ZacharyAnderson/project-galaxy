@@ -3,7 +3,11 @@ import { bindActionCreators, Dispatch } from "redux";
 import { loginRequest } from "../../../actions/actions";
 import { getApiUrl } from "../../../reducers/apiReducer";
 import { GlobalState } from "../../../reducers/initialStateInterface";
-import { getAccessToken } from "../../../reducers/userReducer";
+import {
+  getAccessToken,
+  getFailedMessaged,
+  getLoginFailed
+} from "../../../reducers/userReducer";
 import { getIsLoggedIn } from "../../../reducers/userReducer";
 import {
   LogInComponent,
@@ -20,7 +24,9 @@ function mapStateToProps(state: GlobalState): ReduxStateProps {
   return {
     api: getApiUrl(state),
     accessToken: getAccessToken(state),
-    isLoggedIn: getIsLoggedIn(state)
+    isLoggedIn: getIsLoggedIn(state),
+    loginFailed: getLoginFailed(state),
+    failedMessage: getFailedMessaged(state)
   };
 }
 
