@@ -18,7 +18,6 @@ export default function userReducer(state = init, action: LoginAction) {
   switch (action.type) {
     case LOGIN_SUCCESS:
       console.log("LOGIN_SUCCESS Action");
-      console.log(action.payload);
       newState = {
         accessToken: action.payload.access_token,
         current_user: action.payload.current_user,
@@ -29,7 +28,6 @@ export default function userReducer(state = init, action: LoginAction) {
       return newState;
     case LOGIN_FAILURE:
       console.log("LOGIN_FAILURE Action");
-      console.log(action.payload);
       newState = {
         loginFailed: true,
         failedMessage: action.payload.msg

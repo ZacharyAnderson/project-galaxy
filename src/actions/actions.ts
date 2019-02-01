@@ -48,6 +48,7 @@ export function loginRequest(
   baseUrl: string
 ) {
   return (dispatch: (arg0: { type: string; payload: object }) => void) => {
+    let loggedIn: boolean;
     return fetch(baseUrl + "login", {
       method: "GET",
       headers: {
@@ -57,16 +58,15 @@ export function loginRequest(
       }
     })
       .then(response => {
-        return {
-          loggedIn: response.ok,
-          loginResponse: response.json()
-        } as LoginResponse;
+        loggedIn = response.ok;
+        return response.json();
       })
       .then(data => {
-        if (data.loggedIn) {
-          return dispatch(LoginSuccess(data.loginResponse));
+        if (loggedIn) {
+          dispatch(LoginSuccess(data));
+          return;
         }
-        return dispatch(LoginFailure(data.loginResponse));
+        dispatch(LoginFailure(data));
       });
   };
 }
