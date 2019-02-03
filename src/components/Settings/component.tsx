@@ -2,8 +2,14 @@ import classnames from "classnames";
 import * as React from "react";
 import { Redirect } from "react-router-dom";
 import {
+  Button,
+  Card,
   Container,
+  Form,
+  FormGroup,
+  Input,
   Jumbotron,
+  Label,
   Media,
   Nav,
   NavItem,
@@ -12,6 +18,7 @@ import {
   TabPane
 } from "reactstrap";
 import { NavBar } from "../NavBar/container";
+import "./component.css";
 
 export interface ReduxStateProps {
   api: string;
@@ -25,6 +32,10 @@ export interface ReduxStateProps {
 interface State {
   userObject?: object;
   activeTab: string;
+  oldPassword: string;
+  newPassword1: string;
+  newPassword2: string;
+  [key: string]: string | object | undefined;
 }
 
 type Props = ReduxStateProps;
@@ -33,7 +44,10 @@ export class SettingsComponent extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      activeTab: "1"
+      activeTab: "1",
+      oldPassword: "",
+      newPassword1: "",
+      newPassword2: ""
     };
   }
 
@@ -43,6 +57,17 @@ export class SettingsComponent extends React.Component<Props, State> {
         activeTab: tab
       });
     }
+  };
+
+  public handleChange = (event: React.FormEvent<HTMLInputElement>) => {
+    const target = event.currentTarget as HTMLInputElement;
+    this.setState({ [target.name]: target.value });
+  };
+
+  public handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    console.log(this.state.oldPassword);
+    console.log(this.state.newPassword1);
+    event.preventDefault();
   };
 
   public render() {
@@ -80,6 +105,39 @@ export class SettingsComponent extends React.Component<Props, State> {
                   </Media>
                 </Media>
               </Container>
+              <Card>
+                <Form onSubmit={this.handleSubmit}>
+                  <Label className="label-header">Reset Password</Label>
+                  <FormGroup>
+                    <Label for="oldPassword">Old Password</Label>
+                    <Input
+                      type="password"
+                      name="oldPassword"
+                      id="oldPassword"
+                      onChange={this.handleChange}
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label for="newPassword1">New Password</Label>
+                    <Input
+                      type="password"
+                      name="newPassword1"
+                      id="newPassword1"
+                      onChange={this.handleChange}
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label for="newPassword2">Confirm New Password</Label>
+                    <Input
+                      type="password"
+                      name="newPassword2"
+                      id="newPassword2"
+                      onChange={this.handleChange}
+                    />
+                  </FormGroup>
+                  <Button>Reset Password</Button>
+                </Form>
+              </Card>
             </Jumbotron>
           </TabPane>
         </TabContent>
