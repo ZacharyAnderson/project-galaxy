@@ -2,11 +2,13 @@ import classnames from "classnames";
 import * as React from "react";
 import { Redirect } from "react-router-dom";
 import {
+  Alert,
   Button,
   Card,
   Container,
   Form,
   FormGroup,
+  FormText,
   Input,
   Jumbotron,
   Label,
@@ -35,7 +37,10 @@ interface State {
   oldPassword: string;
   newPassword1: string;
   newPassword2: string;
-  [key: string]: string | object | undefined;
+  resetAction: boolean;
+  resetFailed: boolean;
+  resetMsg: string;
+  [key: string]: string | object | undefined | boolean;
 }
 
 type Props = ReduxStateProps;
@@ -47,7 +52,10 @@ export class SettingsComponent extends React.Component<Props, State> {
       activeTab: "1",
       oldPassword: "",
       newPassword1: "",
-      newPassword2: ""
+      newPassword2: "",
+      resetAction: false,
+      resetFailed: false,
+      resetMsg: ""
     };
   }
 
@@ -65,14 +73,67 @@ export class SettingsComponent extends React.Component<Props, State> {
   };
 
   public handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    console.log(this.state.oldPassword);
-    console.log(this.state.newPassword1);
+    if (this.state.newPassword1 !== this.state.newPassword2) {
+      this.setState({
+        resetFailed: true,
+        resetMsg: "New Password's do not match."
+      });
+    } else if (this.state.newPassword1.search(/[A-Z]/) === -1) {
+      this.setState({
+        resetFailed: true,
+        resetMsg: "Password does not contain an uppercase character."
+      });
+    } else if (this.state.newPassword1.search(/[0-9]/) === -1) {
+      this.setState({
+        resetFailed: true,
+        resetMsg: "Password does not contain a number."
+      });
+    } else if (this.state.newPassword1.length < 8) {
+      this.setState({
+        resetFailed: true,
+        resetMsg: "Password is not at least 8 characters."
+      });
+    } else {
+      fetch(this.props.api + "user/resetpassword", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + this.props.accessToken
+        },
+        body: JSON.stringify({
+          username: this.props.current_user,
+          oldPassword: this.state.oldPassword,
+          newPassword: this.state.newPassword1
+        })
+      }).then(response => {
+        if (response.ok) {
+          this.setState({
+            resetMsg: "Password was reset successfully.",
+            resetAction: true
+          });
+        } else {
+          this.setState({
+            resetMsg: "Password Reset Failed, your old password may be wrong.",
+            resetFailed: true
+          });
+        }
+      });
+    }
     event.preventDefault();
   };
 
   public render() {
     if (!this.props.isLoggedIn) {
       return <Redirect to="/" />;
+    }
+
+    let alertMessage;
+
+    if (this.state.resetFailed) {
+      alertMessage = <Alert color="danger">{this.state.resetMsg}</Alert>;
+    } else if (this.state.resetAction) {
+      alertMessage = <Alert color="success">{this.state.resetMsg}</Alert>;
     }
 
     return (
@@ -108,6 +169,7 @@ export class SettingsComponent extends React.Component<Props, State> {
               <Card>
                 <Form onSubmit={this.handleSubmit}>
                   <Label className="label-header">Reset Password</Label>
+                  {alertMessage}
                   <FormGroup>
                     <Label for="oldPassword">Old Password</Label>
                     <Input
@@ -125,6 +187,10 @@ export class SettingsComponent extends React.Component<Props, State> {
                       id="newPassword1"
                       onChange={this.handleChange}
                     />
+                    <FormText color="muted">
+                      Password needs to be atleast 8 characters, include one
+                      capital letter, and a number.
+                    </FormText>
                   </FormGroup>
                   <FormGroup>
                     <Label for="newPassword2">Confirm New Password</Label>
