@@ -1,0 +1,1260 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AbvCalculatorCard /> renders 1 <AbvCalculatorCard /> component 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <AbvCalculatorCard />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <Card
+        body={true}
+        tag="div"
+      >
+        <CardTitle
+          tag="h5"
+        >
+          ABV Calculator
+        </CardTitle>
+        <CardBody
+          tag="div"
+        >
+          <Form
+            onSubmit={[Function]}
+            tag="form"
+          >
+            <FormGroup
+              row={true}
+              tag="div"
+            >
+              <InputGroup
+                className="input-group input-space"
+                tag="div"
+              >
+                <InputGroupAddon
+                  addonType="prepend"
+                  tag="div"
+                >
+                  OG
+                </InputGroupAddon>
+                <Input
+                  id="startingGravity"
+                  name="startingGravity"
+                  onChange={[Function]}
+                  placeholder="1.048"
+                  type="number"
+                  value={1.048}
+                />
+              </InputGroup>
+              <InputGroup
+                className="input-group input-space"
+                tag="div"
+              >
+                <InputGroupAddon
+                  addonType="prepend"
+                  tag="div"
+                >
+                  FG
+                </InputGroupAddon>
+                <Input
+                  id="finalGravity"
+                  name="finalGravity"
+                  onChange={[Function]}
+                  placeholder="1.010"
+                  type="number"
+                  value={1.01}
+                />
+              </InputGroup>
+              <InputGroup
+                tag="div"
+              >
+                <InputGroupAddon
+                  addonType="prepend"
+                  tag="div"
+                >
+                  <Button
+                    color="secondary"
+                    tag="button"
+                    type="Submit"
+                  >
+                    Calculate
+                  </Button>
+                </InputGroupAddon>
+                <Input
+                  type="text"
+                  value=""
+                />
+              </InputGroup>
+            </FormGroup>
+          </Form>
+        </CardBody>
+      </Card>,
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "body": true,
+        "children": Array [
+          <CardTitle
+            tag="h5"
+          >
+            ABV Calculator
+          </CardTitle>,
+          <CardBody
+            tag="div"
+          >
+            <Form
+              onSubmit={[Function]}
+              tag="form"
+            >
+              <FormGroup
+                row={true}
+                tag="div"
+              >
+                <InputGroup
+                  className="input-group input-space"
+                  tag="div"
+                >
+                  <InputGroupAddon
+                    addonType="prepend"
+                    tag="div"
+                  >
+                    OG
+                  </InputGroupAddon>
+                  <Input
+                    id="startingGravity"
+                    name="startingGravity"
+                    onChange={[Function]}
+                    placeholder="1.048"
+                    type="number"
+                    value={1.048}
+                  />
+                </InputGroup>
+                <InputGroup
+                  className="input-group input-space"
+                  tag="div"
+                >
+                  <InputGroupAddon
+                    addonType="prepend"
+                    tag="div"
+                  >
+                    FG
+                  </InputGroupAddon>
+                  <Input
+                    id="finalGravity"
+                    name="finalGravity"
+                    onChange={[Function]}
+                    placeholder="1.010"
+                    type="number"
+                    value={1.01}
+                  />
+                </InputGroup>
+                <InputGroup
+                  tag="div"
+                >
+                  <InputGroupAddon
+                    addonType="prepend"
+                    tag="div"
+                  >
+                    <Button
+                      color="secondary"
+                      tag="button"
+                      type="Submit"
+                    >
+                      Calculate
+                    </Button>
+                  </InputGroupAddon>
+                  <Input
+                    type="text"
+                    value=""
+                  />
+                </InputGroup>
+              </FormGroup>
+            </Form>
+          </CardBody>,
+        ],
+        "tag": "div",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": "ABV Calculator",
+            "tag": "h5",
+          },
+          "ref": null,
+          "rendered": "ABV Calculator",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": <Form
+              onSubmit={[Function]}
+              tag="form"
+            >
+              <FormGroup
+                row={true}
+                tag="div"
+              >
+                <InputGroup
+                  className="input-group input-space"
+                  tag="div"
+                >
+                  <InputGroupAddon
+                    addonType="prepend"
+                    tag="div"
+                  >
+                    OG
+                  </InputGroupAddon>
+                  <Input
+                    id="startingGravity"
+                    name="startingGravity"
+                    onChange={[Function]}
+                    placeholder="1.048"
+                    type="number"
+                    value={1.048}
+                  />
+                </InputGroup>
+                <InputGroup
+                  className="input-group input-space"
+                  tag="div"
+                >
+                  <InputGroupAddon
+                    addonType="prepend"
+                    tag="div"
+                  >
+                    FG
+                  </InputGroupAddon>
+                  <Input
+                    id="finalGravity"
+                    name="finalGravity"
+                    onChange={[Function]}
+                    placeholder="1.010"
+                    type="number"
+                    value={1.01}
+                  />
+                </InputGroup>
+                <InputGroup
+                  tag="div"
+                >
+                  <InputGroupAddon
+                    addonType="prepend"
+                    tag="div"
+                  >
+                    <Button
+                      color="secondary"
+                      tag="button"
+                      type="Submit"
+                    >
+                      Calculate
+                    </Button>
+                  </InputGroupAddon>
+                  <Input
+                    type="text"
+                    value=""
+                  />
+                </InputGroup>
+              </FormGroup>
+            </Form>,
+            "tag": "div",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <FormGroup
+                row={true}
+                tag="div"
+              >
+                <InputGroup
+                  className="input-group input-space"
+                  tag="div"
+                >
+                  <InputGroupAddon
+                    addonType="prepend"
+                    tag="div"
+                  >
+                    OG
+                  </InputGroupAddon>
+                  <Input
+                    id="startingGravity"
+                    name="startingGravity"
+                    onChange={[Function]}
+                    placeholder="1.048"
+                    type="number"
+                    value={1.048}
+                  />
+                </InputGroup>
+                <InputGroup
+                  className="input-group input-space"
+                  tag="div"
+                >
+                  <InputGroupAddon
+                    addonType="prepend"
+                    tag="div"
+                  >
+                    FG
+                  </InputGroupAddon>
+                  <Input
+                    id="finalGravity"
+                    name="finalGravity"
+                    onChange={[Function]}
+                    placeholder="1.010"
+                    type="number"
+                    value={1.01}
+                  />
+                </InputGroup>
+                <InputGroup
+                  tag="div"
+                >
+                  <InputGroupAddon
+                    addonType="prepend"
+                    tag="div"
+                  >
+                    <Button
+                      color="secondary"
+                      tag="button"
+                      type="Submit"
+                    >
+                      Calculate
+                    </Button>
+                  </InputGroupAddon>
+                  <Input
+                    type="text"
+                    value=""
+                  />
+                </InputGroup>
+              </FormGroup>,
+              "onSubmit": [Function],
+              "tag": "form",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": Array [
+                  <InputGroup
+                    className="input-group input-space"
+                    tag="div"
+                  >
+                    <InputGroupAddon
+                      addonType="prepend"
+                      tag="div"
+                    >
+                      OG
+                    </InputGroupAddon>
+                    <Input
+                      id="startingGravity"
+                      name="startingGravity"
+                      onChange={[Function]}
+                      placeholder="1.048"
+                      type="number"
+                      value={1.048}
+                    />
+                  </InputGroup>,
+                  <InputGroup
+                    className="input-group input-space"
+                    tag="div"
+                  >
+                    <InputGroupAddon
+                      addonType="prepend"
+                      tag="div"
+                    >
+                      FG
+                    </InputGroupAddon>
+                    <Input
+                      id="finalGravity"
+                      name="finalGravity"
+                      onChange={[Function]}
+                      placeholder="1.010"
+                      type="number"
+                      value={1.01}
+                    />
+                  </InputGroup>,
+                  <InputGroup
+                    tag="div"
+                  >
+                    <InputGroupAddon
+                      addonType="prepend"
+                      tag="div"
+                    >
+                      <Button
+                        color="secondary"
+                        tag="button"
+                        type="Submit"
+                      >
+                        Calculate
+                      </Button>
+                    </InputGroupAddon>
+                    <Input
+                      type="text"
+                      value=""
+                    />
+                  </InputGroup>,
+                ],
+                "row": true,
+                "tag": "div",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "children": Array [
+                      <InputGroupAddon
+                        addonType="prepend"
+                        tag="div"
+                      >
+                        OG
+                      </InputGroupAddon>,
+                      <Input
+                        id="startingGravity"
+                        name="startingGravity"
+                        onChange={[Function]}
+                        placeholder="1.048"
+                        type="number"
+                        value={1.048}
+                      />,
+                    ],
+                    "className": "input-group input-space",
+                    "tag": "div",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "function",
+                      "props": Object {
+                        "addonType": "prepend",
+                        "children": "OG",
+                        "tag": "div",
+                      },
+                      "ref": null,
+                      "rendered": "OG",
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "id": "startingGravity",
+                        "name": "startingGravity",
+                        "onChange": [Function],
+                        "placeholder": "1.048",
+                        "type": "number",
+                        "value": 1.048,
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                  ],
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "children": Array [
+                      <InputGroupAddon
+                        addonType="prepend"
+                        tag="div"
+                      >
+                        FG
+                      </InputGroupAddon>,
+                      <Input
+                        id="finalGravity"
+                        name="finalGravity"
+                        onChange={[Function]}
+                        placeholder="1.010"
+                        type="number"
+                        value={1.01}
+                      />,
+                    ],
+                    "className": "input-group input-space",
+                    "tag": "div",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "function",
+                      "props": Object {
+                        "addonType": "prepend",
+                        "children": "FG",
+                        "tag": "div",
+                      },
+                      "ref": null,
+                      "rendered": "FG",
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "id": "finalGravity",
+                        "name": "finalGravity",
+                        "onChange": [Function],
+                        "placeholder": "1.010",
+                        "type": "number",
+                        "value": 1.01,
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                  ],
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "children": Array [
+                      <InputGroupAddon
+                        addonType="prepend"
+                        tag="div"
+                      >
+                        <Button
+                          color="secondary"
+                          tag="button"
+                          type="Submit"
+                        >
+                          Calculate
+                        </Button>
+                      </InputGroupAddon>,
+                      <Input
+                        type="text"
+                        value=""
+                      />,
+                    ],
+                    "tag": "div",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "function",
+                      "props": Object {
+                        "addonType": "prepend",
+                        "children": <Button
+                          color="secondary"
+                          tag="button"
+                          type="Submit"
+                        >
+                          Calculate
+                        </Button>,
+                        "tag": "div",
+                      },
+                      "ref": null,
+                      "rendered": Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "children": "Calculate",
+                          "color": "secondary",
+                          "tag": "button",
+                          "type": "Submit",
+                        },
+                        "ref": null,
+                        "rendered": "Calculate",
+                        "type": [Function],
+                      },
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "type": "text",
+                        "value": "",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                  ],
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <Card
+          body={true}
+          tag="div"
+        >
+          <CardTitle
+            tag="h5"
+          >
+            ABV Calculator
+          </CardTitle>
+          <CardBody
+            tag="div"
+          >
+            <Form
+              onSubmit={[Function]}
+              tag="form"
+            >
+              <FormGroup
+                row={true}
+                tag="div"
+              >
+                <InputGroup
+                  className="input-group input-space"
+                  tag="div"
+                >
+                  <InputGroupAddon
+                    addonType="prepend"
+                    tag="div"
+                  >
+                    OG
+                  </InputGroupAddon>
+                  <Input
+                    id="startingGravity"
+                    name="startingGravity"
+                    onChange={[Function]}
+                    placeholder="1.048"
+                    type="number"
+                    value={1.048}
+                  />
+                </InputGroup>
+                <InputGroup
+                  className="input-group input-space"
+                  tag="div"
+                >
+                  <InputGroupAddon
+                    addonType="prepend"
+                    tag="div"
+                  >
+                    FG
+                  </InputGroupAddon>
+                  <Input
+                    id="finalGravity"
+                    name="finalGravity"
+                    onChange={[Function]}
+                    placeholder="1.010"
+                    type="number"
+                    value={1.01}
+                  />
+                </InputGroup>
+                <InputGroup
+                  tag="div"
+                >
+                  <InputGroupAddon
+                    addonType="prepend"
+                    tag="div"
+                  >
+                    <Button
+                      color="secondary"
+                      tag="button"
+                      type="Submit"
+                    >
+                      Calculate
+                    </Button>
+                  </InputGroupAddon>
+                  <Input
+                    type="text"
+                    value=""
+                  />
+                </InputGroup>
+              </FormGroup>
+            </Form>
+          </CardBody>
+        </Card>,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "body": true,
+          "children": Array [
+            <CardTitle
+              tag="h5"
+            >
+              ABV Calculator
+            </CardTitle>,
+            <CardBody
+              tag="div"
+            >
+              <Form
+                onSubmit={[Function]}
+                tag="form"
+              >
+                <FormGroup
+                  row={true}
+                  tag="div"
+                >
+                  <InputGroup
+                    className="input-group input-space"
+                    tag="div"
+                  >
+                    <InputGroupAddon
+                      addonType="prepend"
+                      tag="div"
+                    >
+                      OG
+                    </InputGroupAddon>
+                    <Input
+                      id="startingGravity"
+                      name="startingGravity"
+                      onChange={[Function]}
+                      placeholder="1.048"
+                      type="number"
+                      value={1.048}
+                    />
+                  </InputGroup>
+                  <InputGroup
+                    className="input-group input-space"
+                    tag="div"
+                  >
+                    <InputGroupAddon
+                      addonType="prepend"
+                      tag="div"
+                    >
+                      FG
+                    </InputGroupAddon>
+                    <Input
+                      id="finalGravity"
+                      name="finalGravity"
+                      onChange={[Function]}
+                      placeholder="1.010"
+                      type="number"
+                      value={1.01}
+                    />
+                  </InputGroup>
+                  <InputGroup
+                    tag="div"
+                  >
+                    <InputGroupAddon
+                      addonType="prepend"
+                      tag="div"
+                    >
+                      <Button
+                        color="secondary"
+                        tag="button"
+                        type="Submit"
+                      >
+                        Calculate
+                      </Button>
+                    </InputGroupAddon>
+                    <Input
+                      type="text"
+                      value=""
+                    />
+                  </InputGroup>
+                </FormGroup>
+              </Form>
+            </CardBody>,
+          ],
+          "tag": "div",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": "ABV Calculator",
+              "tag": "h5",
+            },
+            "ref": null,
+            "rendered": "ABV Calculator",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": <Form
+                onSubmit={[Function]}
+                tag="form"
+              >
+                <FormGroup
+                  row={true}
+                  tag="div"
+                >
+                  <InputGroup
+                    className="input-group input-space"
+                    tag="div"
+                  >
+                    <InputGroupAddon
+                      addonType="prepend"
+                      tag="div"
+                    >
+                      OG
+                    </InputGroupAddon>
+                    <Input
+                      id="startingGravity"
+                      name="startingGravity"
+                      onChange={[Function]}
+                      placeholder="1.048"
+                      type="number"
+                      value={1.048}
+                    />
+                  </InputGroup>
+                  <InputGroup
+                    className="input-group input-space"
+                    tag="div"
+                  >
+                    <InputGroupAddon
+                      addonType="prepend"
+                      tag="div"
+                    >
+                      FG
+                    </InputGroupAddon>
+                    <Input
+                      id="finalGravity"
+                      name="finalGravity"
+                      onChange={[Function]}
+                      placeholder="1.010"
+                      type="number"
+                      value={1.01}
+                    />
+                  </InputGroup>
+                  <InputGroup
+                    tag="div"
+                  >
+                    <InputGroupAddon
+                      addonType="prepend"
+                      tag="div"
+                    >
+                      <Button
+                        color="secondary"
+                        tag="button"
+                        type="Submit"
+                      >
+                        Calculate
+                      </Button>
+                    </InputGroupAddon>
+                    <Input
+                      type="text"
+                      value=""
+                    />
+                  </InputGroup>
+                </FormGroup>
+              </Form>,
+              "tag": "div",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": <FormGroup
+                  row={true}
+                  tag="div"
+                >
+                  <InputGroup
+                    className="input-group input-space"
+                    tag="div"
+                  >
+                    <InputGroupAddon
+                      addonType="prepend"
+                      tag="div"
+                    >
+                      OG
+                    </InputGroupAddon>
+                    <Input
+                      id="startingGravity"
+                      name="startingGravity"
+                      onChange={[Function]}
+                      placeholder="1.048"
+                      type="number"
+                      value={1.048}
+                    />
+                  </InputGroup>
+                  <InputGroup
+                    className="input-group input-space"
+                    tag="div"
+                  >
+                    <InputGroupAddon
+                      addonType="prepend"
+                      tag="div"
+                    >
+                      FG
+                    </InputGroupAddon>
+                    <Input
+                      id="finalGravity"
+                      name="finalGravity"
+                      onChange={[Function]}
+                      placeholder="1.010"
+                      type="number"
+                      value={1.01}
+                    />
+                  </InputGroup>
+                  <InputGroup
+                    tag="div"
+                  >
+                    <InputGroupAddon
+                      addonType="prepend"
+                      tag="div"
+                    >
+                      <Button
+                        color="secondary"
+                        tag="button"
+                        type="Submit"
+                      >
+                        Calculate
+                      </Button>
+                    </InputGroupAddon>
+                    <Input
+                      type="text"
+                      value=""
+                    />
+                  </InputGroup>
+                </FormGroup>,
+                "onSubmit": [Function],
+                "tag": "form",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": Array [
+                    <InputGroup
+                      className="input-group input-space"
+                      tag="div"
+                    >
+                      <InputGroupAddon
+                        addonType="prepend"
+                        tag="div"
+                      >
+                        OG
+                      </InputGroupAddon>
+                      <Input
+                        id="startingGravity"
+                        name="startingGravity"
+                        onChange={[Function]}
+                        placeholder="1.048"
+                        type="number"
+                        value={1.048}
+                      />
+                    </InputGroup>,
+                    <InputGroup
+                      className="input-group input-space"
+                      tag="div"
+                    >
+                      <InputGroupAddon
+                        addonType="prepend"
+                        tag="div"
+                      >
+                        FG
+                      </InputGroupAddon>
+                      <Input
+                        id="finalGravity"
+                        name="finalGravity"
+                        onChange={[Function]}
+                        placeholder="1.010"
+                        type="number"
+                        value={1.01}
+                      />
+                    </InputGroup>,
+                    <InputGroup
+                      tag="div"
+                    >
+                      <InputGroupAddon
+                        addonType="prepend"
+                        tag="div"
+                      >
+                        <Button
+                          color="secondary"
+                          tag="button"
+                          type="Submit"
+                        >
+                          Calculate
+                        </Button>
+                      </InputGroupAddon>
+                      <Input
+                        type="text"
+                        value=""
+                      />
+                    </InputGroup>,
+                  ],
+                  "row": true,
+                  "tag": "div",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "function",
+                    "props": Object {
+                      "children": Array [
+                        <InputGroupAddon
+                          addonType="prepend"
+                          tag="div"
+                        >
+                          OG
+                        </InputGroupAddon>,
+                        <Input
+                          id="startingGravity"
+                          name="startingGravity"
+                          onChange={[Function]}
+                          placeholder="1.048"
+                          type="number"
+                          value={1.048}
+                        />,
+                      ],
+                      "className": "input-group input-space",
+                      "tag": "div",
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "function",
+                        "props": Object {
+                          "addonType": "prepend",
+                          "children": "OG",
+                          "tag": "div",
+                        },
+                        "ref": null,
+                        "rendered": "OG",
+                        "type": [Function],
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "id": "startingGravity",
+                          "name": "startingGravity",
+                          "onChange": [Function],
+                          "placeholder": "1.048",
+                          "type": "number",
+                          "value": 1.048,
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": [Function],
+                      },
+                    ],
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "function",
+                    "props": Object {
+                      "children": Array [
+                        <InputGroupAddon
+                          addonType="prepend"
+                          tag="div"
+                        >
+                          FG
+                        </InputGroupAddon>,
+                        <Input
+                          id="finalGravity"
+                          name="finalGravity"
+                          onChange={[Function]}
+                          placeholder="1.010"
+                          type="number"
+                          value={1.01}
+                        />,
+                      ],
+                      "className": "input-group input-space",
+                      "tag": "div",
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "function",
+                        "props": Object {
+                          "addonType": "prepend",
+                          "children": "FG",
+                          "tag": "div",
+                        },
+                        "ref": null,
+                        "rendered": "FG",
+                        "type": [Function],
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "id": "finalGravity",
+                          "name": "finalGravity",
+                          "onChange": [Function],
+                          "placeholder": "1.010",
+                          "type": "number",
+                          "value": 1.01,
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": [Function],
+                      },
+                    ],
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "function",
+                    "props": Object {
+                      "children": Array [
+                        <InputGroupAddon
+                          addonType="prepend"
+                          tag="div"
+                        >
+                          <Button
+                            color="secondary"
+                            tag="button"
+                            type="Submit"
+                          >
+                            Calculate
+                          </Button>
+                        </InputGroupAddon>,
+                        <Input
+                          type="text"
+                          value=""
+                        />,
+                      ],
+                      "tag": "div",
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "function",
+                        "props": Object {
+                          "addonType": "prepend",
+                          "children": <Button
+                            color="secondary"
+                            tag="button"
+                            type="Submit"
+                          >
+                            Calculate
+                          </Button>,
+                          "tag": "div",
+                        },
+                        "ref": null,
+                        "rendered": Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "class",
+                          "props": Object {
+                            "children": "Calculate",
+                            "color": "secondary",
+                            "tag": "button",
+                            "type": "Submit",
+                          },
+                          "ref": null,
+                          "rendered": "Calculate",
+                          "type": [Function],
+                        },
+                        "type": [Function],
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "type": "text",
+                          "value": "",
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": [Function],
+                      },
+                    ],
+                    "type": [Function],
+                  },
+                ],
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;
