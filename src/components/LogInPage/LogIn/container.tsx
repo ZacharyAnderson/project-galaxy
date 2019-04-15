@@ -6,7 +6,8 @@ import { GlobalState } from "../../../reducers/initialStateInterface";
 import {
   getAccessToken,
   getFailedMessaged,
-  getLoginFailed
+  getLoginFailed,
+  getUserName
 } from "../../../reducers/userReducer";
 import { getIsLoggedIn } from "../../../reducers/userReducer";
 import {
@@ -26,7 +27,8 @@ function mapStateToProps(state: GlobalState): ReduxStateProps {
     accessToken: getAccessToken(state),
     isLoggedIn: getIsLoggedIn(state),
     loginFailed: getLoginFailed(state),
-    failedMessage: getFailedMessaged(state)
+    failedMessage: getFailedMessaged(state),
+    current_user: getUserName(state)
   };
 }
 

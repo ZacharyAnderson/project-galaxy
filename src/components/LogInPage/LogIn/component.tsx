@@ -25,6 +25,7 @@ export interface ReduxStateProps {
   isLoggedIn: boolean;
   loginFailed: boolean;
   failedMessage: string;
+  current_user: string;
 }
 
 export interface ReduxDispatchProps {
@@ -64,7 +65,8 @@ export class LogInComponent extends React.Component<Props, State> {
 
   public render() {
     if (this.props.isLoggedIn) {
-      return <Redirect to="/" />;
+      const redirectLink = "/" + this.props.current_user + "/recipe";
+      return <Redirect to={redirectLink} />;
     }
 
     return (

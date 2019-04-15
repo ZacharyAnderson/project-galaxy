@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import App from "./App";
 import { GenericNotFound } from "./components/GenericNotFound";
+import { Home } from "./components/Home/component";
 import { LogInPage } from "./components/LogInPage/component";
 import { Settings } from "./components/Settings/container";
 import { SignUp } from "./components/SignUp/container";
@@ -25,6 +26,7 @@ const routing = (
           <Route exact={true} path="/signup" component={SignUp} />
           <Route exact={true} path="/login" component={LogInPage} />
           <Route exact={true} path="/settings" component={Settings} />
+          <Route exact={true} path="/:current_user/recipe" component={Home} />
           <Route component={GenericNotFound} />
         </Switch>
       </div>
