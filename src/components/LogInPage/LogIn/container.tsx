@@ -32,7 +32,9 @@ function mapStateToProps(state: GlobalState): ReduxStateProps {
   };
 }
 
-function mapDispatchToProps(dispatch: Dispatch<MyActionType>) {
+function mapDispatchToProps(
+  dispatch: Dispatch<MyActionType>
+): ReduxDispatchProps {
   return {
     loginRequest: bindActionCreators(loginRequest, dispatch)
   };
