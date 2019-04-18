@@ -13,8 +13,7 @@ export class Recipes extends React.Component<{}> {
   public render() {
     return (
       testList.map(aleName => {
-        // tslint:disable-next-line: jsx-key
-        return <ListGroupItem tag={Link} to={aleName.tag}>{aleName.name}</ListGroupItem>
+        return <ListGroupItem key={aleName.name} tag={Link} to={aleName.tag}>{aleName.name}</ListGroupItem>
       })
     );
   }
