@@ -1,5 +1,6 @@
 export interface ApiState {
   api: string;
+  s3_bucket: string;
 }
 
 export interface UserState {
